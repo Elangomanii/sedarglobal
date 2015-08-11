@@ -1,0 +1,96 @@
+/**
+ * Sedar
+ */
+
+.lang .ar {
+    background: url("images/sprite.png") no-repeat scroll -156px -185px transparent;
+    color: #898989;
+    float: right;
+    height: 11px;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 33px;
+}
+.lang .active {
+    display:none !important;
+}
+
+
+#main .add-section p {
+    font: 18px/20px 'ralewayregular',Arial,Helvetica,sans-serif;
+    letter-spacing: 0;
+    margin: 0 0 17px;
+    text-transform: none;
+}
+
+#content .client .name a{
+    color: #000000;
+    font-size: 24px;
+    line-height: 26px;
+}
+#content .client .name a:hover{color:#c39a21;}
+
+#main .project .name a{
+    color: #000000;
+    font-size: 24px;
+    line-height: 30px;
+}
+#main .project .name a:hover{color:#c39a21;}
+
+.project .form-type-item{
+    display: none;
+}
+
+.feedback #edit-actions{
+    display:none;
+}
+
+.toolbar .pager .item-list {
+    float: left;
+}
+.toolbar .pager .item-list ul li {
+    margin: 0;
+}
+.toolbar .view-filters,
+.toolbar .views-widget {
+    float: left;
+}
+.views-widget
+#color_hidden{
+    display:none;
+}
+
+.feedback-form label{
+    font-weight: normal !important;
+}
+
+.view-product-search .view-filters{
+    display:none;
+}
+
+#block-views-projects-block .pager, #block-views-clients-block .pager, .view-history .pager{
+    display:none;
+}
+.arabic .facts img {margin:0 0 0 17px;}
+.arabic .jcf-hidden {
+    right:-9999px !important;
+    left:auto !important;
+}
+body.arabic #footer .logo {
+    float: right;
+}
+body.arabic #footer .by {
+    float: left;
+}
+body.arabic #footer .by img {
+    float: right;
+    margin: 0 0 0 5px;
+}
+body.arabic #footer p {
+    float: left;
+    padding: 3px 0 0 10px;
+}
+body.arabic .intro .map {
+    left: -476px;
+    right: auto;
+}

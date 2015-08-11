@@ -1,0 +1,6 @@
+.tabs {
+    background-image: url("../images/ptn.png"), radial-gradient(ellipse at center center , rgba(119, 119, 119, 1) 0%, rgba(94, 94, 94, 1) 35%, rgba(62, 62, 62, 1) 59%, rgba(37, 37, 37, 1) 77%, rgba(36, 36, 36, 1) 100%);
+    margin: 0;
+    overflow: hidden;
+    padding: 0 0 47px;
+}

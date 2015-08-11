@@ -1,0 +1,137 @@
+/** {font-size: 100.01%;}*/
+html {font-size: 62.5%;}
+html[dir="rtl"] #stcpDiv{
+/*	left:auto !important;
+	right:-1988px !important;*/
+}
+
+
+
+body {
+	color:#212121;
+	font: 1.6em/21px 'Arial';
+}
+
+#views-exposed-form-product-search-page {display:none !important;}
+/* hide original element */
+.jcf-hidden {
+	position: absolute !important;
+	left: -9999px !important; /* change to right: -9999px on RTL sites */
+}
+/* custom select styles */
+.select-area {
+	position: relative;
+	overflow: hidden;
+	height: 47px;
+	float: left;
+	cursor:pointer;
+	background: rgb(126,126,126);
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdlN2U3ZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM1ODU4NTgiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  rgba(126,126,126,1) 0%, rgba(88,88,88,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(126,126,126,1)), color-stop(100%,rgba(88,88,88,1)));
+	background: -webkit-linear-gradient(top,  rgba(126,126,126,1) 0%,rgba(88,88,88,1) 100%);
+	background: -o-linear-gradient(top,  rgba(126,126,126,1) 0%,rgba(88,88,88,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(126,126,126,1) 0%,rgba(88,88,88,1) 100%);
+	background: linear-gradient(to bottom,  rgba(126,126,126,1) 0%,rgba(88,88,88,1) 100%);
+}
+
+
+.select-select3 .select-opener{background: url('../images/sprite.png') no-repeat -492px 11px;}
+.select-active .select-opener{background: url('../images/sprite.png') no-repeat -267px 12px;}
+.select-select3.select-active .select-opener{background: url('../images/sprite.png') no-repeat -536px 9px;}
+.select-options {
+	position: absolute;
+	overflow: hidden;
+	background: #7e7e7e;
+	z-index: 2000;
+}
+.select-options .drop-holder {
+	overflow: hidden;
+	height: 1%;
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.35), inset 0 2px 2px rgba(0,0,0,0.4);
+}
+.drop-select3{background:#f4f4f4;}
+.drop-select3 .drop-holder{box-shadow: inset 0 0 6px rgba(0,0,0,0.3), inset 0 2px 2px rgba(0,0,0,0.1);}
+.select-options ul {
+	list-style: none;
+	padding:3px 0 0;
+	margin: 0;
+	text-shadow:0 2px 3px rgba( 29, 29, 29, 0.75);
+	overflow:hidden;
+}
+.select-options ul li {
+	width: 100%;
+	float: left;
+	list-style:none;
+}
+.select-options ul a {
+	text-decoration: none;
+	padding: 2px 16px;
+	display: block;
+	color: #e6e6e6;
+}
+.drop-select3  ul a{
+	color:#545454;
+	text-shadow:none;
+}
+.select-options .item-selected a {
+	text-decoration: none;
+	background: #696969;
+	color: #e6e6e6;
+}
+
+.select-select2{
+	background:none;
+	height:24px;
+	line-height:24px;
+	margin:-3px 0 0;
+}
+.select-select2 .center{
+	padding:0 26px 0 0;
+	color:#555;
+	text-shadow:none;
+	line-height:24px;
+	display:inline-block;
+	position:relative;
+}
+.select-select2 .center:after{
+	content:'';
+	background: url('../images/sprite.png') no-repeat -497px -11px;
+	width: 18px;
+	height: 11px;
+	position:absolute;
+	right:0;
+	top:9px;
+	z-index:50;
+}
+.select-select2 .select-opener{
+	height:24px;
+	width:22px;
+	background:none;
+}
+.drop-select2{
+	width:135px !important;
+	border:1px solid #cfcfcf;
+	margin:-116px 0 0 10%;
+	background:#f0f0f0;
+	box-shadow: 0 0 7px rgba(139,139,139,1);
+	min-height:214px;
+}
+.arabic .drop-select2 {margin: -116px 10% 0 0;}
+.drop-select2 .drop-holder{box-shadow: none;}
+.drop-select2 .item-selected a{
+	background:#fff;
+	color:#525252;
+	z-index:10;
+	position:relative;
+	box-shadow: 0 0 4px rgba(200,200,200,0.75);
+}
+.drop-select2 ul a{color:#525252;}
+.drop-select2 ul{
+	text-shadow:none;
+	width:135px;
+}
+.drop-select2 .drop-list{
+	width:135px !important;
+	margin:0 -13px 0 0;
+}

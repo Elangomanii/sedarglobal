@@ -1,0 +1,36 @@
+.map-background{
+    background: #7a92a4 none repeat scroll 0 0;
+    height: 610px;
+}
+
+.map-background p{
+    font: 14px/16px "Arial";
+    letter-spacing: 1px;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    color: #212121;
+}
+.project{
+	padding:13px 11px 12px;
+	position:relative;
+	border:2px solid transparent;
+	border-radius:2px;
+}
+.project:hover{
+	border:2px solid #7A92A4;
+	background:#ededed;
+}
+
+
+.tool-bar p{
+    font: 14px/16px "Arial";
+    letter-spacing: 1px;
+}
+
+.tool-bar{
+    padding-top: 35px;
+}
+
+#store{
+    padding-left: 12px;
+}
