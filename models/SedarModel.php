@@ -180,72 +180,7 @@ class SedarModel extends CI_Model {
 	
 	
 	
-	//if($brand){
-	//    $count = 0;
-	//    $select = $select.' ( ';
-	//    foreach($brand as $brandArray)
-	//    {
-	//	if($count < $brandCount-1){
-	//	$select = $select.' brandId LIKE '.$brandArray.' OR';
-	//    }else{
-	//	$select = $select.' brandId LIKE '.$brandArray;
-	//    }
-	//	$count++;
-	//    }
-	//    $select = $select.' ) ';
-	//}
-	//if($product){ 
-	//    $count = 0;
-	//    $select = $select.' AND';
-	//    $select = $select.' ( ';
-	//    foreach($product as $productArray)
-	//    {
-	//	if($count < $productCount-1){
-	//	$select = $select.' productCategory LIKE '.$productArray. ' OR';
-	//    }else{
-	//	$select = $select.' productCategory LIKE '.$productArray;
-	//    }
-	//	$count++;
-	//    }
-	//    $select = $select.' ) ';
-	//}
-	//if($material){
-	//    $count = 0;
-	//    $select = $select.' AND';
-	//    $select = $select.' ( ';
-	//    foreach($material as $materialArray)
-	//    {
-	//	if($count < $materialCount-1){
-	//	$select = $select.' productMaterial LIKE '.$materialArray. ' OR';
-	//    }else{
-	//	$select = $select.' productMaterial LIKE '.$materialArray;
-	//    }
-	//	$count++;
-	//    }
-	//    $select = $select.' ) ';
-	//}
-	//if($accessories){ 
-	//    $count = 0;
-	//    $select = $select.' AND';
-	//    $select = $select.' ( ';
-	//    foreach($accessories as $accessoriesArray)
-	//    {
-	//	if($count < $accessoriesCount-1){
-	//	$select = $select.' productAccessories LIKE '.$accessoriesArray. ' OR';
-	//    }else{
-	//	$select = $select.' productAccessories LIKE '.$accessoriesArray;
-	//    }
-	//	$count++;
-	//    }
-	//    $select = $select.' ) ';
-	//}
-	//if($motorization){
-	//    $select = $select.' AND';
-	//    $select = $select.' ( ';
-	//    $select = $select.' motor LIKE '.$motorization;
-	//    $select = $select.' ) ';
-	//}
-	//return $this->db->query($select)->result_array();
+	
     }
     function projectDetails()
     {
