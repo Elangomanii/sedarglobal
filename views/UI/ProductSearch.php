@@ -27,7 +27,7 @@
                                     <div class="row">
                                     <div class="col-md-4">
                                         <div class="product-hide">
-                                    <li>
+                                    <li> 
                                         <p>ABOUT</p>                                        
                                     </li>
                                     </div>
@@ -239,19 +239,12 @@
                                    <div class="cell">
                                       <label>BRAND</label>
                                       <div class="select-box">
-                                         <select data-rel="edit-field-brand-tid" class="select3" title="Select a brand" >
-                                          <option>Option</option>
-<!--                                            <option>Amazona</option>
-                                            <option>Antartica</option>
-                                            <option>Denhagg</option>
-                                            <option>Eco Safari</option>
-                                            <option>Fujikawa</option>
-                                            <option>marco pola</option>
-                                            <option>Marina</option>
-                                            <option>Somfy</option>
-                                            <option>Swarovski</option>
-                                            <option>YorkWeave</option>-->
-                                         </select>
+                                        <select data-rel="edit-field-brand-tid" name="brandName[]" class="select3" title="Select a brand" onchange="productSearch()">
+                                            <option value="">Option</option>
+                                            <?php foreach($BrandsName as $row) { ?>
+                                            <option value="<?php echo $row['id']?>"><?php echo $row['name'];?></option>
+                                            <?php } ?>
+                                        </select>
                                          <div class="add-box">
                                             <a href="#" class="add">add</a>
                                             <div class="tooltip">Add another brand</div>
@@ -261,8 +254,11 @@
                                    <div class="cell">
                                       <label>PRODUCT</label>
                                       <div class="select-box">
-                                         <select data-rel="edit-field-type-tid" class="select3" title="Select a product" >
-                                            <option>option</option>
+                                         <select data-rel="edit-field-type-tid" name="productName[]" class="select3" title="Select a product" onchange="productSearch()">
+                                            <option value="">option</option>
+                                            <?php foreach($ProductAccessories as $acc) { ?>
+                                            <option value="<?php echo $acc['id'];?>"> <?php echo $acc['AccessoriesName'];?> </option>
+                                            <?php } ?>
                                          </select>
                                          <div class="add-box">
                                             <a href="#" class="add">add</a>
@@ -273,9 +269,10 @@
                                    <div class="cell">
                                       <label>MATERIAL</label>
                                       <div class="select-box">
-                                         <select data-rel="edit-field-material-tid-i18n" class="select3" title="Select material" >
-                                            <?php foreach( $ProductMaterial as $option) {?>
-                                          <option value="<?php echo $option['materialName'];?>"><?php echo $option['materialName'];?></option>
+                                         <select data-rel="edit-field-material-tid-i18n" name="materialName[]" class="select3" title="Select material" onchange="productSearch()">
+                                            <option value="">option</option>
+                                            <?php foreach($ProductMaterial as $option) {?>
+                                                <option value="<?php echo $option['id'];?>"><?php echo $option['materialName'];?></option>
                                             <?php }?>
                                          </select>
                                          <div class="add-box">
@@ -287,9 +284,10 @@
                                    <div class="cell">
                                       <label>ACCESSORIES</label>
                                       <div class="select-box">
-                                         <select data-rel="edit-field-accessories-tid-i18n" class="select3" title="Select accessories" >
-                                            <?php foreach( $ProductAccessories as $option) {?>
-                                          <option value="<?php echo $option['AccessoriesName'];?>"><?php echo $option['AccessoriesName'];?></option>
+                                         <select data-rel="edit-field-accessories-tid-i18n" name="accessoriesName[]" class="select3" title="Select accessories" onchange="productSearch()">
+                                            <option value="">option</option>
+                                            <?php foreach($ProductAccessories as $option) {?>
+                                                <option value="<?php echo $option['id'];?>"><?php echo $option['AccessoriesName'];?></option>
                                             <?php }?>
                                          </select>
                                          <div class="add-box">
@@ -301,9 +299,10 @@
                                    <div class="cell motorization-cell">
                                       <label>MOTORIZATION</label>
                                       <div class="select-box">
-                                         <select data-rel="edit-field-motorization-value-i18n" class="select3" title="Select" >
-                                            <option>Yes</option>
-                                            <option>No</option>
+                                         <select data-rel="edit-field-motorization-value-i18n" name="motorization" class="select3" title="Select"  onchange="productSearch()">
+                                            <option value="">Option</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
                                          </select>
                                       </div>
                                    </div>
@@ -355,31 +354,31 @@
                 
                 <div class="col-md-2 col-xs-12">
                <div class="filters-bar">
-				<select id="color-select"  data-rel="edit-field-color-rgb" class="select2" title="Select a color">
-											<option>#AC725E</option>
-											<option>#D06B64</option>
-											<option>#F83A22</option>
-											<option>#FA573C</option>
-											<option>#FF7537</option>
-											<option>#FFAD46</option>
-											<option>#42D692</option>
-											<option>#16A765</option>
-											<option>#7BD148</option>
-											<option>#B3DC6C</option>
-											<option>#FBE983</option>
-											<option>#92E1C0</option>
-											<option>#9FE1E7</option>
-											<option>#9FC6E7</option>
-											<option>#4986E7</option>
-											<option>#9A9CFF</option>
-											<option>#B99AFF</option>
-											<option>#C2C2C2</option>
-											<option>#CABDBF</option>
-											<option>#CCA6AC</option>
-											<option>#F691B2</option>
-											<option>#CD74E6</option>
-											<option>#A47AE2</option>
-									</select>
+                    <select id="color-select"  data-rel="edit-field-color-rgb" class="select2" title="Select a color">
+                        <option>#AC725E</option>
+                        <option>#D06B64</option>
+                        <option>#F83A22</option>
+                        <option>#FA573C</option>
+                        <option>#FF7537</option>
+                        <option>#FFAD46</option>
+                        <option>#42D692</option>
+                        <option>#16A765</option>
+                        <option>#7BD148</option>
+                        <option>#B3DC6C</option>
+                        <option>#FBE983</option>
+                        <option>#92E1C0</option>
+                        <option>#9FE1E7</option>
+                        <option>#9FC6E7</option>
+                        <option>#4986E7</option>
+                        <option>#9A9CFF</option>
+                        <option>#B99AFF</option>
+                        <option>#C2C2C2</option>
+                        <option>#CABDBF</option>
+                        <option>#CCA6AC</option>
+                        <option>#F691B2</option>
+                        <option>#CD74E6</option>
+                        <option>#A47AE2</option>
+                    </select>
                </div>
                 </div>
                 <div class="col-md-2 col-xs-12">
@@ -479,19 +478,22 @@
       <div class="col-md-offset-1 col-md-10">
         <div class="product-content">
             <p>PRODUCTS</p>
-            <div class="row">
+            <div class="row" id="productSearchResult">
+                <?php foreach($allProducts as $rowData) { ?>
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="row">
                         <div class="fujikawa-hover">
                             <a href="#">
                             <img class="img-responsive" src="<?php echo base_url();?>assets/images/fujikawa/FAB05.jpg">
-                            <h2>FUJIKAWA</h2>
-                            <h3>Drapes</h3>
+                            <?php $result = $this->SedarModel->fetchBranName($rowData['id']);?>
+                            <h2><?php echo $result[0]['name'];?></h2>
+                            <h3><?php echo $rowData['productName'];?></h3>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                <?php } ?>
+                <!--<div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="row">
                         <div class="fujikawa-hover">
                             <a href="#">
@@ -523,20 +525,70 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
-                    <div class="butn" style="text-align: center; padding-bottom: 20px">
-               <button type="button" class="btn btn-warning">Load More</button>
-            </div>
+        <div class="butn" style="text-align: center; padding-bottom: 20px">
+            <button type="button" class="btn btn-warning">Load More</button>
+        </div>
         </div>      
       </div>   
    </div>
-   </div>
+</div>
+<script>
+function productSearch() {
+    var brand = new Array;
+    var product = new Array;
+    var material = new Array;
+    var accessories = new Array;
+    var motorization = new Array;
+    $('select[name="brandName[]"]').each(function(){
+        brand.push($(this).val());
+    });
+    $('select[name="productName[]"]').each(function(){
+        product.push($(this).val());
+        
+    });
+    $('select[name="materialName[]"]').each(function(){
+        material.push($(this).val());
+        
+    });
+    $('select[name="accessoriesName[]"]').each(function(){
+        accessories.push($(this).val());
+        
+    });
+    motorization =  $('select[name="motorization"]').val();
+    if (brand == '') {
+        brand = '';
+    }else{
+        brand = brand.join(',');
+    }
+    if (product == '') {
+        product = '';
+    }else{
+        product = product.join(',');
+    }
+    if (material == ''){
+        material= '';
+    }else{
+        material = material.join(',');
+    }
+    if (accessories == '') {
+        accessories = '';
+    }else{
+        accessories = accessories.join(',');
+    }
+    $.ajax({
+        type: "POST",
+        url:"<?php echo site_url('SedarCtr/ajaxProductSearch')?>",
+        data:{brand:brand,product:product,material:material,accessories:accessories,motorization:motorization},
+        success: function (response) {
+            $('#productSearchResult').html(response)
+	}
+    });   
+}
+function removeProduct() {
+    productSearch();
+}
 
-            
-
-            
-
-   
-  
+</script>

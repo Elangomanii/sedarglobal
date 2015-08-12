@@ -88,15 +88,39 @@ class SedarCtr extends CI_Controller {
     
     function ProductSearch()
     {
+	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['ProductCategory']=$this->SedarModel->FetchProductCategory();
 	$data['ProductMaterial']=$this->SedarModel->FetchProductMaterial();
 	$data['ProductAccessories']=$this->SedarModel->FetchProductAccessories();
-	$data['BrandsName']=$this->SedarModel->getBrandsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
+	$data['allProducts']=$this->SedarModel->getAllProduct();
 	$this->load->view('header');
 	$this->load->view('UI/ProductSearch',$data);
 	$this->load->view('footer',$data);
     }
-    
+    function ajaxProductSearch(){
+	$brand = array_filter(explode(',',$_POST['brand']));
+	$product = array_filter(explode(',',$_POST['product']));
+	$material = array_filter(explode(',',$_POST['material']));
+	$accessories = array_filter(explode(',',$_POST['accessories']));
+	$motorization = $_POST['motorization'];
+	$data = $this->SedarModel->ajaxProductSearch($brand,$product,$material,$accessories,$motorization);
+	foreach($data as $rowData) {
+	?>
+	    <div class="col-md-3 col-sm-6 col-xs-12">
+		<div class="row">
+		    <div class="fujikawa-hover">
+			<a href="#">
+			<img class="img-responsive" src="<?php echo base_url();?>assets/images/fujikawa/FAB05.jpg">
+			<?php $result = $this->SedarModel->fetchBranName($rowData['id']); ?>
+			<h2><?php echo $result[0]['name'];?></h2>
+			<h3><?php echo $rowData['productName'];?></h3>
+			</a>
+		    </div>
+		</div>
+	    </div>
+	<?php }
+    }
     function Product($brand,$proName)
     {
 	$recentlyViewedData = array(
@@ -180,5 +204,10 @@ class SedarCtr extends CI_Controller {
 	$this->load->view('UI/News',$data);
 	$this->load->view('footer');
     }
-    
+    function drapes()
+    {
+	$this->load->view('header');
+	$this->load->view('UI/Drapes');
+	$this->load->view('footer');
+    }
 }

@@ -73,8 +73,179 @@ class SedarModel extends CI_Model {
     
     function getTermsTable()
     {
-	$select= "SELECT * FROM terms ";
+	$select= "SELECT * FROM terms";
 	return $this->db->query($select)->result_array();
+    }
+    function getAllProduct()
+    {
+	$select= "SELECT * FROM products";
+	return $this->db->query($select)->result_array();
+    }
+    function fetchBranName($id){
+	$select = "SELECT * FROM brands where id='$id'";
+	return $this->db->query($select)->result_array();
+    }
+    function ajaxProductSearch($brand,$product,$material,$accessories,$motorization)
+    {
+	$select = "SELECT * FROM products WHERE";
+	$brandCount = count($brand);
+	$productCount = count($product);
+	$materialCount = count($material);
+	$accessoriesCount = count($accessories);
+	$loopCheck = 0;
+	if($brand){
+	    $count = 0;
+	    $select = $select.' ( ';
+	    foreach($brand as $brandArray)
+	    {
+		if($count < $brandCount-1){
+		$select = $select.' brandId LIKE '.$brandArray.' OR';
+	    }else{
+		$select = $select.' brandId LIKE '.$brandArray;
+	    }
+		$count++;
+	    }
+	    $select = $select.' ) ';
+	    $loopCheck++;
+	}
+	if($product){ 
+	    $count = 0;
+	    if($loopCheck != 0)
+	    {
+		$select = $select.' AND';
+		$select = $select.' ( ';
+	    }else{
+		$select = $select.' ( ';
+	    }
+	    foreach($product as $productArray)
+	    {
+		if($count < $productCount-1){
+		$select = $select.' productCategory LIKE '.$productArray. ' OR';
+	    }else{
+		$select = $select.' productCategory LIKE '.$productArray;
+	    }
+		$count++;
+	    }
+	    $select = $select.' ) ';
+	    $loopCheck++;
+	}
+	if($material){
+	    $count = 0;
+	    if($loopCheck != 0)
+	    {
+		$select = $select.' AND';
+		$select = $select.' ( ';
+	    }else{
+		$select = $select.' ( ';
+	    }
+	    foreach($material as $materialArray)
+	    {
+		if($count < $materialCount-1){
+		$select = $select.' productMaterial LIKE '.$materialArray. ' OR';
+	    }else{
+		$select = $select.' productMaterial LIKE '.$materialArray;
+	    }
+		$count++;
+	    }
+	    $select = $select.' ) ';
+	    $loopCheck++;
+	}
+	if($accessories){ 
+	    $count = 0;
+	    if($loopCheck != 0)
+	    {
+		$select = $select.' AND';
+		$select = $select.' ( ';
+	    }else{
+		$select = $select.' ( ';
+	    }
+	    foreach($accessories as $accessoriesArray)
+	    {
+		if($count < $accessoriesCount-1){
+		$select = $select.' productAccessories LIKE '.$accessoriesArray. ' OR';
+	    }else{
+		$select = $select.' productAccessories LIKE '.$accessoriesArray;
+	    }
+		$count++;
+	    }
+	    $select = $select.' ) ';
+	}
+	if($motorization){
+	    $select = $select.' AND';
+	    $select = $select.' ( ';
+	    $select = $select.' motor LIKE '.$motorization;
+	    $select = $select.' ) ';
+	}
+	return $this->db->query($select)->result_array();
+	
+	
+	
+	//if($brand){
+	//    $count = 0;
+	//    $select = $select.' ( ';
+	//    foreach($brand as $brandArray)
+	//    {
+	//	if($count < $brandCount-1){
+	//	$select = $select.' brandId LIKE '.$brandArray.' OR';
+	//    }else{
+	//	$select = $select.' brandId LIKE '.$brandArray;
+	//    }
+	//	$count++;
+	//    }
+	//    $select = $select.' ) ';
+	//}
+	//if($product){ 
+	//    $count = 0;
+	//    $select = $select.' AND';
+	//    $select = $select.' ( ';
+	//    foreach($product as $productArray)
+	//    {
+	//	if($count < $productCount-1){
+	//	$select = $select.' productCategory LIKE '.$productArray. ' OR';
+	//    }else{
+	//	$select = $select.' productCategory LIKE '.$productArray;
+	//    }
+	//	$count++;
+	//    }
+	//    $select = $select.' ) ';
+	//}
+	//if($material){
+	//    $count = 0;
+	//    $select = $select.' AND';
+	//    $select = $select.' ( ';
+	//    foreach($material as $materialArray)
+	//    {
+	//	if($count < $materialCount-1){
+	//	$select = $select.' productMaterial LIKE '.$materialArray. ' OR';
+	//    }else{
+	//	$select = $select.' productMaterial LIKE '.$materialArray;
+	//    }
+	//	$count++;
+	//    }
+	//    $select = $select.' ) ';
+	//}
+	//if($accessories){ 
+	//    $count = 0;
+	//    $select = $select.' AND';
+	//    $select = $select.' ( ';
+	//    foreach($accessories as $accessoriesArray)
+	//    {
+	//	if($count < $accessoriesCount-1){
+	//	$select = $select.' productAccessories LIKE '.$accessoriesArray. ' OR';
+	//    }else{
+	//	$select = $select.' productAccessories LIKE '.$accessoriesArray;
+	//    }
+	//	$count++;
+	//    }
+	//    $select = $select.' ) ';
+	//}
+	//if($motorization){
+	//    $select = $select.' AND';
+	//    $select = $select.' ( ';
+	//    $select = $select.' motor LIKE '.$motorization;
+	//    $select = $select.' ) ';
+	//}
+	//return $this->db->query($select)->result_array();
     }
     function projectDetails()
     {
@@ -101,13 +272,16 @@ class SedarModel extends CI_Model {
 	$select= "SELECT * FROM feedback";
 	return $this->db->query($select)->result_array();     
     }
-    
     function FetchProductMaterial()
     {
 	$select= "SELECT * FROM sedarmaterial";
 	return $this->db->query($select)->result_array();        
     }
-    
+    function FetchProductCategory()
+    {
+	$select= "SELECT * FROM productcategory";
+	return $this->db->query($select)->result_array();        
+    }
     function FetchProductAccessories()
     {
 	$select= "SELECT * FROM sedaraccessories";

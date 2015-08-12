@@ -165,10 +165,8 @@ function initCustomFilters(){
 						e.preventDefault();
 						var btn = jQuery(this);
 						var realSelect = jQuery('#' + mainSelect.data('rel'));
-						
 						//remove add boxes
 						btn.parent().find('a.btn-remove').trigger('click');
-						
 						//reset value of select and remove all disabled states
 						realSelect.find('option').attr('selected', false);
 						realSelect.val(realSelect.prop('defaultSelected'));
@@ -212,7 +210,6 @@ function initCustomFilters(){
 					var newBox = jQuery('<div class="new-filter">').insertBefore(addBox);
 					var btnRemove = jQuery('<a href="#" class="btn-remove">Remove</a>').appendTo(newBox);
 					newBox.append(selectOrig.clone().data('selectOrig', selectOrig));
-					
 					removeFilter();
 					reInitSelect();
 					jcf.customForms.replaceAll(self);
@@ -224,7 +221,10 @@ function initCustomFilters(){
 						var removeSelect = jQuery(this).closest('.new-filter').find('select');
 						var currentMultiSelect = mainForm.find('#' + removeSelect.attr('data-rel'));
 						var removeIndex = removeSelect.get(0).selectedIndex;
-						
+						//modified by pravinkumar
+						removeSelect.val('');
+						productSearch();
+						//modified end
 						/* off selected option */
 						currentMultiSelect.find('option').eq(removeIndex).prop('selected', false);
 						/* off disabled option */
