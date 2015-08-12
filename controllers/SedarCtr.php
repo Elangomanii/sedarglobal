@@ -202,7 +202,9 @@ class SedarCtr extends CI_Controller {
 	$data['newsdata']=$this->SedarModel->getNewsData($id); 
 	$this->load->view('header');
 	$this->load->view('UI/News',$data);
-	$this->load->view('footer');
+	$data['TermsName']=$this->SedarModel->getTermsTable();
+	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$this->load->view('footer',$data);
     }
     function drapes()
     {
