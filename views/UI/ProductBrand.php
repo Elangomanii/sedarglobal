@@ -301,31 +301,31 @@ if($NameList['id']==$data[4])
             <div class="row">
                     <?php
                         
-                        $recentlyViewedData[]=$this->session->userdata('recentlyViewedData');
-                        echo "<pre>";
-                        print_r($recentlyViewedData);
-                        echo "</pre>";
+                        //$recentlyViewedData[]=$this->session->userdata('recentlyViewedData');
+                        //echo "<pre>";
+                        //print_r($recentlyViewedData);
+                        //echo "</pre>";
                         //$length = count($recentlyViewedData);
                         //    for ($i = 0; $i < $length; $i++){
                         //  echo $recentlyViewedData[$i];
                         //    }
-for ($i = 0 ; $i < count($recentlyViewedData); $i++) {
-
-                        $brand=$recentlyViewedData[$i];
-                        $proName=$recentlyViewedData[$i];
-                        echo $brand;
-                        echo $proName;
-
-  } 
+//for ($i = 0 ; $i < count($recentlyViewedData); $i++) {
+//
+//                        $brand=$recentlyViewedData[$i];
+//                        $proName=$recentlyViewedData[$i];
+//                        echo $brand;
+//                        echo $proName;
+//
+//  } 
                         
 
-
-                        $countValue=count($recentlyViewedData);
-                        for($i=$countValue;$countValue>0;$i--){
-                        $brand=$recentlyViewedData[$i]['[brandId'];
-                        $proName=$recentlyViewedData[$i]['imageId'];
-                        $getProductNew=$this->SedarModel->getProductName($brand,$proName);
-                        }
+                        //
+                        //$countValue=count($recentlyViewedData);
+                        //for($i=$countValue;$countValue>0;$i--){
+                        //$brand=$recentlyViewedData[$i]['[brandId'];
+                        //$proName=$recentlyViewedData[$i]['imageId'];
+                        //$getProductNew=$this->SedarModel->getProductName($brand,$proName);
+                        //}
                         //print_r($getProductNew);
                     ?>
                 <div class="col-md-3 col-sm-6 col-xs-12">
