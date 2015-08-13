@@ -46,7 +46,11 @@ class SedarModel extends CI_Model {
 	$select= "SELECT * FROM brands where status='ENABLED' ORDER BY position";
 	return $this->db->query($select)->result_array();
     }
-    
+    function getProductsTable()
+    {
+	$select= "SELECT * FROM productcategory ";
+	return $this->db->query($select)->result_array();
+    }
     function getProduct($brand)
     {
 	$select= "SELECT * FROM products where brandId='$brand'";

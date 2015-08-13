@@ -18,7 +18,7 @@ class SedarCtr extends CI_Controller {
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
 	$data['bringproducts']=$this->SedarModel->BringProducts();
         $data['TermsName']=$this->SedarModel->getTermsTable();
-	
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['getnews']=$this->SedarModel->getnews();
 	
 	$data['brands']=$this->SedarModel->getBrandsTable();
@@ -33,6 +33,7 @@ class SedarCtr extends CI_Controller {
 	$this -> load -> view('header');
 	$this -> load -> view('UI/AboutUs');
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$this->load->view('footer',$data);
     }
@@ -42,6 +43,7 @@ class SedarCtr extends CI_Controller {
 	$this -> load -> view('header');
 	$data['contactDetails']=$this->SedarModel->getContactTable();
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$this -> load -> view('UI/Contact',$data);
 	$this->load->view('footer',$data);
@@ -52,6 +54,7 @@ class SedarCtr extends CI_Controller {
 	$this->load->view('header');
 	$data['Franchising_Opportunities']=$this->SedarModel->FetchFranchisingOpportunities();
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$this->load->view('UI/FranchisingOpportunities',$data);
 	$this->load->view('footer',$data);
@@ -61,6 +64,7 @@ class SedarCtr extends CI_Controller {
 	$this->load->view('header');
 	$data['Clients']=$this->SedarModel->FetchClientsImages();
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$data['clientDetails']=$this->SedarModel->clientDetails();
 	$this->load->view('UI/Clients',$data);
@@ -71,6 +75,7 @@ class SedarCtr extends CI_Controller {
     {
 	$this->load->view('header');
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$this->load->view('UI/Stores',$data);
 	$this->load->view('footer',$data);
@@ -80,6 +85,7 @@ class SedarCtr extends CI_Controller {
 	$this->load->view('header');
 	$data['Projects']=$this->SedarModel->FetchProjectsImages();
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$data['projectTitle']=$this->SedarModel->getTermsTable();
 	$data['ProjectDetails']=$this->SedarModel->projectDetails();
@@ -90,6 +96,7 @@ class SedarCtr extends CI_Controller {
     function ProductSearch()
     {
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['ProductCategory']=$this->SedarModel->FetchProductCategory();
 	$data['ProductMaterial']=$this->SedarModel->FetchProductMaterial();
 	$data['ProductAccessories']=$this->SedarModel->FetchProductAccessories();
@@ -149,6 +156,7 @@ class SedarCtr extends CI_Controller {
 	$data['getProduct']=$this->SedarModel->getProductName($brand,$proName);
 	$data['getProductDetail']=$this->SedarModel->getProduct($brand);
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$this->load->view('UI/ProductBrand',$data);
 	$this->load->view('footer',$data);
@@ -165,6 +173,7 @@ class SedarCtr extends CI_Controller {
 	$data['Brands']=$this->SedarModel->getBrands($brand);
 	$data['getProduct']=$this->SedarModel->getProduct($brand);
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$this->load->view('UI/Brands',$data);
 	$this->load->view('footer',$data);
@@ -175,6 +184,7 @@ class SedarCtr extends CI_Controller {
 	$this->load->view('header');	
 	$data['Terms']=$this->SedarModel->getTerms($terms);
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$this->load->view('UI/Terms',$data);
 	$this->load->view('footer',$data);
@@ -186,6 +196,7 @@ class SedarCtr extends CI_Controller {
 	$data['Feedback']=$this->SedarModel->FetchFeedbackDescription();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$this->load->view('UI/feedback',$data);
 	$this->load->view('footer',$data);
     }
@@ -196,21 +207,26 @@ class SedarCtr extends CI_Controller {
 	$this->load->view('UI/NewsLetter');
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
 	$this->load->view('footer',$data);
     }
     function News($id)
     {
 	$data['newsdata']=$this->SedarModel->getNewsData($id); 
 	$this->load->view('header');
-	$this->load->view('UI/News',$data);
+	
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+	$data['productsName']=$this->SedarModel->getProductsTable();
+	$this->load->view('UI/News',$data);
 	$this->load->view('footer',$data);
     }
     function drapes()
     {
+	$data['productsName']=$this->SedarModel->getProductsTable();
+	$data['BrandsName']=$this->SedarModel->getBrandsTable();
 	$this->load->view('header');
-	$this->load->view('UI/Drapes');
+	$this->load->view('UI/Drapes',$data);
 	$this->load->view('footer');
     }
 }

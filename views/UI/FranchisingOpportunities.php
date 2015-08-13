@@ -86,29 +86,13 @@
                                             </li>
                                             <?php } ?>
                                         </div>
-                                        <div class="col-md-2">
+                                         <div class="col-md-2">
                                             <li class="dropdown-header">EXPLORE <br> BY PRODUCTS</li>
+                                            <?php foreach($productsName as $name){?>
                                             <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Drapes">Drapes</a>
+                                                <a href="<?php echo base_url('SedarCtr/ProductSearch/'.$name['id']);?>"><?php echo $name['name']?></a>
                                             </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Blinds</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Wallcoverings</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Awnings</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Pillows</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Folding doors</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Accessories</a>
-                                            </li>
+                                            <?php } ?>
                                         </div>
                                         <div class="col-md-2">
                                             <li class="dropdown-header">PRODUCT SEARCH</li>

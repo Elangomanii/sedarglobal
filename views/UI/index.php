@@ -92,27 +92,11 @@ $path="http://localhost/Global_Admin/uploads/";
                                         </div>
                                         <div class="col-md-2">
                                             <li class="dropdown-header">EXPLORE <br> BY PRODUCTS</li>
+                                            <?php foreach($productsName as $name){?>
                                             <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Drapes">Drapes</a>
+                                                <a href="<?php echo base_url('SedarCtr/ProductSearch/'.$name['id']);?>"><?php echo $name['name']?></a>
                                             </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Drapes">Blinds</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Drapes">Wallcoverings</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/ProductSearch">Awnings</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/ProductSearch">Pillows</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/ProductSearch">Folding doors</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/ProductSearch">Accessories</a>
-                                            </li>
+                                            <?php } ?>
                                         </div>
                                         <div class="col-md-2">
                                             <li class="dropdown-header">PRODUCT SEARCH</li>
