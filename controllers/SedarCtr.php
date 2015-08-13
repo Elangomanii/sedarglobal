@@ -40,6 +40,7 @@ class SedarCtr extends CI_Controller {
     function ContactUs()
     {
 	$this -> load -> view('header');
+	$data['contactDetails']=$this->SedarModel->getContactTable();
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$this -> load -> view('UI/Contact',$data);
@@ -123,23 +124,23 @@ class SedarCtr extends CI_Controller {
     }
     function Product($brand,$proName)
     {
-	$recentlyViewedData = array(
-					'0'=>array('brandId' => $brand,'imageId' => $proName),
-					'1'=>array('brandId' => $brand,'imageId' => $proName),
-					'2'=>array('brandId' => $brand,'imageId' => $proName),
-					'3'=>array('brandId' => $brand,'imageId' => $proName),
-					'4'=>array('brandId' => $brand,'imageId' => $proName) 
-				     );
-	    for($i=5;$i>0;$i--){
-	    $ifEmpty=$this->session->userdata['recentlyViewedData'][$i]['brandId'];
-	    if($ifEmpty==""){
-		$recentlyViewedData[$i]['brandId'] =$brand;
-		$recentlyViewedData[$i]['imageId'] =$proName;
-		break;
-	    }
-	}
-	$this->session->set_userdata('recentlyViewedData', $recentlyViewedData);
-	$recentlyViewedData=$this->session->userdata('recentlyViewedData');
+	//$recentlyViewedData = array(
+	//				'0'=>array('brandId' => $brand,'imageId' => $proName),
+	//				'1'=>array('brandId' => $brand,'imageId' => $proName),
+	//				'2'=>array('brandId' => $brand,'imageId' => $proName),
+	//				'3'=>array('brandId' => $brand,'imageId' => $proName),
+	//				'4'=>array('brandId' => $brand,'imageId' => $proName) 
+	//			     );
+	//    for($i=5;$i>0;$i--){
+	//    $ifEmpty=$this->session->userdata['recentlyViewedData'][$i]['brandId'];
+	//    if($ifEmpty==""){
+	//	$recentlyViewedData[$i]['brandId'] =$brand;
+	//	$recentlyViewedData[$i]['imageId'] =$proName;
+	//	break;
+	//    }
+	//}
+	//$this->session->set_userdata('recentlyViewedData', $recentlyViewedData);
+	//$recentlyViewedData=$this->session->userdata('recentlyViewedData');
 //	echo "<pre>";
 //	echo print_r($recentlyViewedData);
 //	echo "</pre>";

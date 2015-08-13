@@ -408,7 +408,7 @@ $path="http://localhost/Global_Admin/uploads/";
                                 ?>
                             <div class="col-md-4">
                                 <li>
-                                <a href="<?php echo base_url();?>SedarCtr/Marcopolo">
+                                <a href="<?php echo base_url('SedarCtr/Brands/'.$brands['id']);?>">
                                     <img class="img-responsive" src="<?php echo $path.$brands['brandImage'] ?>" width="292" height="118" alt="" />
                                     <div class="text">
                                         <img class="img-responsive" src="<?php echo $path.$brands['nameImage'] ?>" width="100" height="26" alt="" />
@@ -446,7 +446,7 @@ $path="http://localhost/Global_Admin/uploads/";
                           <div class="col-md-4">
                                 <div class="tab-bottom">
                                     <li>
-                                <a href="<?php echo base_url();?>SedarCtr/ProductSearch">
+                                <a href="<?php echo base_url('SedarCtr/ProductSearch/'.$products['id']);?>">
                                     <img class="img-responsive" src="<?php echo $path.$products['image'] ?>" width="292" height="118" alt="" />
                                     <div class="text">
                                         <h3><?php echo$products['name'] ?></h3>

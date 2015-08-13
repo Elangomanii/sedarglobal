@@ -228,9 +228,11 @@
    <div class="background-color">
    <div class="header-cont">
       <div class="container">
+         <?php foreach($contactDetails as $contact){?>
          <div class="col-md-offset-1 col-md-6">
-            <h1>Contact</h1>
+            <h1><?php echo $contact['contactTitle']?></h1>
          </div>
+         <?php }?>
       </div>
    </div>
    
@@ -239,18 +241,17 @@
             <div class="col-md-6">
                 <div class="row">
             <div class="pro-contact">
-                <h2>Get in touch with us. </h2>
-                <p>For General Enquiry P.O. Box : 6879 <br>Telephone : +9716 533 22 55 Fax: <br>+9716 533 83 23 Email: <br>
-                info@sedar.ae Projects: United Arab <br>Emirates Tel: +9716 533 22 55 Fax: <br>+9716 533 83 23 Email: <br>projects@sedar.ae Saudi Arabia Tel: <br>+966-11-4535444 Fax: <br>+966-11-4539911 Email: <br>ksaprojects@sedarksa.com </p>                
+                <h2><?php echo $contact['contactSubTitle']?></h2>
+                <p><?php echo $contact['description']?></p>                
             </div>
             </div>
             </div>
             <div class="col-md-6">                
-                <div class="row">
+               <!-- <div class="row">
                     <div class="contact-map">
                     <div id='location-canvas' style='width:100%;height:250px;'></div>
                 </div>
-                </div> 
+                </div> -->
             </div>
                      
          </div>

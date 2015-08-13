@@ -43,7 +43,7 @@ class SedarModel extends CI_Model {
 
     function getBrandsTable()
     {
-	$select= "SELECT * FROM brands";
+	$select= "SELECT * FROM brands where status='ENABLED' ORDER BY position";
 	return $this->db->query($select)->result_array();
     }
     
@@ -74,6 +74,11 @@ class SedarModel extends CI_Model {
     function getTermsTable()
     {
 	$select= "SELECT * FROM terms";
+	return $this->db->query($select)->result_array();
+    }
+    function getContactTable()
+    {
+	$select= "SELECT * FROM contact";
 	return $this->db->query($select)->result_array();
     }
     function getAllProduct()
@@ -225,13 +230,13 @@ class SedarModel extends CI_Model {
     
     function FetchProjectsImages()
     {
-	$select= "SELECT * FROM about_project_img";
+	$select= "SELECT * FROM about_project_img where status='ENABLED' ORDER BY position ";
 	return $this->db->query($select)->result_array();        
     }
     
     function FetchClientsImages()
     {
-	$select= "SELECT * FROM about_client_img";
+	$select= "SELECT * FROM about_client_img where status='ENABLED' ORDER BY position";
 	return $this->db->query($select)->result_array();        
     }
     function SearchSedarCountryMap()
