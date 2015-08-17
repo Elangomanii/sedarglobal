@@ -67,14 +67,14 @@ class SedarCtr extends CI_Controller {
 	$this->load->view('footer',$data);
     }
     
-    function Stores()
-    {
-	$this->load->view('header');
-	$data['BrandsName']=$this->SedarModel->getBrandsTable();
-	$data['TermsName']=$this->SedarModel->getTermsTable();
-	$this->load->view('UI/Stores',$data);
-	$this->load->view('footer',$data);
-    }
+//    function Stores()
+//    {
+//	$this->load->view('header');
+//	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+//	$data['TermsName']=$this->SedarModel->getTermsTable();
+//	$this->load->view('UI/Stores',$data);
+//	$this->load->view('footer',$data);
+//    }
     function Projects()
     {
 	$this->load->view('header');
