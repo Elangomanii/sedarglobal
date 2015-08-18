@@ -8,13 +8,18 @@
                     <section class="add-section">
                         <div class="holder">
                             <article class="box">
-                                <form action="<?php echo base_url('SedarCtr/SearchSedarCountryMap');?>" metod="post" class="form">
-                                    <select id="select" name="field_address_info_country_selective" title="Select A Country">
-                                        <?php //foreach($Stores as $list){?>
-                                          <option value="<?php //echo $list['CountryCode']?>"><?php //echo $list['CountryName']?></option>
-                                        <?php//}?>                                       
+                                <form action="<?php echo base_url(); ?>SedarCtr/footerStore/" metod="post" class="form">
+                                    <select id="select" class="countrycode" title="Select A Country">
+                                        <?php foreach($country as $list){?>
+                                          <option value="<?php echo $list['CountryCode']?>"><?php echo $list['CountryName']?></option>
+                                        <?php }?>                                       
+                                <form action="<?php echo base_url(); ?>SedarCtr/Stores" metod="post" class="form">
+                                    <select id="select" class="countrycode" title="Select A Country">
+                                        <?php foreach($country as $list){?>
+                                          <option value="<?php echo $list['CountryCode']?>"><?php echo $list['CountryName']?></option>
+                                        <?php }?>                                       
                                     </select>
-                                    <input type="submit" name="search" value="go"/>
+                                    <input type="submit" id="getcountryname" />
                                 </form>
                             </article>
                         </div>
@@ -84,7 +89,48 @@
 </body>
 </html>
 
-<!--Author: Selvakumar S
-Functionality By: Selvakumar S
-Created on: 15/06/15
-Developed By appnlogic.com-->
+
+<script>
+    
+    
+    $('.countrycode').change(function() {
+    var codecountry=$(this).find("option:selected").val();
+    alert(codecountry);
+    url="<?php echo base_url(); ?>SedarCtr/footerStore/"+codecountry;
+    $('.form').attr('action',url)
+
+    alert(url);
+       
+    });
+       
+       
+       
+       
+</script>
+
+<script>
+    
+    
+    $('.countrycode').change(function() {
+    var codecountry=$(this).find("option:selected").val();
+    alert(codecountry);
+    if (codecountry!="") {
+
+    url="<?php echo base_url(); ?>SedarCtr/footerStore/"+codecountry;
+    }
+    else{
+        
+     url="<?php echo base_url(); ?>SedarCtr/Stores";
+        
+        
+    }
+    $('.form').attr('action',url)
+
+    alert(url);
+       
+    });
+       
+       
+       
+       
+</script>
