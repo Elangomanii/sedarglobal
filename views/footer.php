@@ -7,12 +7,7 @@
                     <h3>Find a Sedar store</h3>
                     <section class="add-section">
                         <div class="holder">
-                            <article class="box">
-                                <form action="<?php echo base_url(); ?>SedarCtr/footerStore/" metod="post" class="form">
-                                    <select id="select" class="countrycode" title="Select A Country">
-                                        <?php foreach($country as $list){?>
-                                          <option value="<?php echo $list['CountryCode']?>"><?php echo $list['CountryName']?></option>
-                                        <?php }?>                                       
+                            <article class="box">                                
                                 <form action="<?php echo base_url(); ?>SedarCtr/Stores" metod="post" class="form">
                                     <select id="select" class="countrycode" title="Select A Country">
                                         <?php foreach($country as $list){?>
