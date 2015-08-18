@@ -85,15 +85,56 @@
                                                 <a href="<?php echo base_url('SedarCtr/Brands/'.$NameList['id']);?>"><?php echo $NameList['name']?></a>
                                             </li>
                                             <?php } ?>
-
-                                        </div>
-                                         <div class="col-md-2">
-                                            <li class="dropdown-header">EXPLORE <br> BY PRODUCTS</li>
-                                            <?php foreach($productsName as $name){?>
-                                            <li>
-                                                <a href="<?php echo base_url('SedarCtr/ProductSearch/'.$name['id']);?>"><?php echo $name['name']?></a>
+                                            <!--<li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Brands/Antartica">Antartica</a>
                                             </li>
-                                            <?php } ?>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Brands/Denhagg">DenHaag</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Brands/Ecosafari">Eco Safari</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Brands/Fujikawa">Fujikawa</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Brands/Marcopolo">Marco Polo</a></li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Brands/marina">Marina</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Brands/Somfy">Somfy</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Brands/Swarovski">Swarovski</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Brands/Yorkweave">YorkWeave</a>
+                                            </li>-->
+                                        </div>
+                                        <div class="col-md-2">
+                                            <li class="dropdown-header">EXPLORE <br> BY PRODUCTS</li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Drapes">Drapes</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Blinds</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Wallcoverings</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Awnings</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Pillows</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Folding doors</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?php echo base_url();?>SedarCtr/Clients">Accessories</a>
+                                            </li>
                                         </div>
                                         <div class="col-md-2">
                                             <li class="dropdown-header">PRODUCT SEARCH</li>
@@ -191,14 +232,14 @@
    </div>
    </div>
    
-   <div class="map-background">
+<!--   <div class="map-background">
       <div class="container">
          <div class="col-md-offset-1 col-md-10">
             <p>FIND US ON THE MAP</p>
             <div id='location-canvas' style='width:100%;height:520px;'></div>
          </div>
       </div>
-   </div>
+   </div>-->
    
    <div class="background-color">
       <div class="container">
@@ -213,13 +254,12 @@
                <div class="col-md-3">
                   <div class="row">
                <div class="form-item form-type-select form-item-field-address-info-country-selective">
-                  <select class="select2 form-select" id="edit-field-address-info-country-selective" name="field_address_info_country_selective">
-                     <option value="All" selected="selected">Select country</option>
-                     <option value="AE">United Arab Emirates</option>
-                     <option value="BH">Bahrain</option>
-                     <option value="OM">Oman</option>
-                     <option value="QA">Qatar</option>
-                     <option value="SA">Saudi Arabia</option>
+                  <select class="select2 form-select country" id="edit-field-address-info-country-selective" name="field_address_info_country_selective">
+                        <option>Select</option>
+                        <?php foreach($country as $row){ ?>
+                     <option value="<?php echo $row['CountryCode']?>"><?php echo $row['CountryName']?></option>
+                    
+                     <?php }?>
                   </select>
                </div>
                </div>
@@ -227,8 +267,10 @@
                 <div class="col-md-3">
                   <div class="row">
                <div class="form-item form-type-select form-item-field-address-info-locality-selective">
-                  <select class="select2 form-select" id="edit-field-address-info-locality-selective" name="field_address_info_locality_selective" style="width: 100%;">
-                     <option value="All" selected="selected">Select city</option>
+                  <select class="select2 form-select state" id="edit-field-address-info-locality-selective" name="field_address_info_locality_selective" style="width: 100%;">
+                      <option>Kottakuppam</option>
+                      <option>Barkathnager</option>
+                        <option>Mumbai</option>
                   </select>
                </div>
                </div>
@@ -247,17 +289,69 @@
    <div class="container">
       <div class="col-md-offset-1 col-md-10">
         <div class="project-bottom">
-            <p>18 stores </p>
-            <div class="row">
-               <div class="col-md-4 col-sm-6">
-                  <div class="row">
-                  <div class="project">
-                  <img class="img-responsive" src="<?php echo base_url();?>assets/images/stores/DM.jpg">
-                  <h3>Dammam - KSA</h3>
-                  </div>
-                  </div>
-               </div>               
-               <div class="col-md-4 col-sm-6">
+            
+            <?php
+           $path ='http://localhost/Global_Admin/uploads/';
+            $resultcont=0;
+            $count=0;
+             if(isset($getStory))
+            {
+            foreach ($getStory as $row)
+            {
+                
+            $getimage  = $row['textImage'];
+            if(!empty($getimage))
+            {
+             $resultcont = $count + count($getimage);
+            }
+               $count++;
+            }
+            }
+            else{
+              
+               foreach ($getfooter as $row)
+            {
+                
+            $getimage  = $row['textImage'];
+            if(!empty($getimage))
+            {
+             $resultcont = $count + count($getimage);
+            }
+               $count++;
+            }  
+                
+                
+            }
+            ?>
+            <p class="getimagecounter"><?php if(isset($getStory)){ echo $resultcont; } else { echo $resultcont; }?> stores </p>
+            <div class="row storeimage">
+            <?php
+            if(isset($getStory))
+            {
+            foreach ($getStory as $row)
+            
+                 {
+                    ?>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="row">
+                            <div class="project">
+                                <img class="img-responsive" onClick="getvalueModel($(this));" data-toggle="modal" data-target="#myModal" src="<?php echo $path.$row['textImage'];?>">
+                                <h3><?php echo $row['addresstitle']?></h3>
+                            </div>
+                        </div>
+                    </div>
+            <?php } } else { foreach ($getfooter as $row) {?>
+              
+                <div class="col-md-4 col-sm-6">
+                        <div class="row">
+                            <div class="project">
+                                <img class="img-responsive" onClick="getvalueModel($(this));" data-toggle="modal" data-target="#myModal" src="<?php echo $path.$row['textImage'];?>">
+                                <h3><?php echo $row['addresstitle']?></h3>
+                            </div>
+                        </div>
+                    </div>
+              <?php } }?>
+               <!--<div class="col-md-4 col-sm-6">
                   <div class="row">
                   <div class="project">
                   <img class="img-responsive" src="<?php echo base_url();?>assets/images/stores/MD2.jpg">
@@ -273,9 +367,9 @@
                   </div>
                   </div>
                </div>
-            </div>
+            </div>-->
          
-            <div class="row">
+<!--            <div class="row">
                <div class="col-md-4 col-sm-6">
                   <div class="row">
                   <div class="project">
@@ -300,9 +394,9 @@
                   </div>
                   </div>
                </div>
-            </div>
+            </div>-->
          
-            <div class="row">
+<!--            <div class="row">
                <div class="col-md-4 col-sm-6">
                   <div class="row">
                   <div class="project">
@@ -327,9 +421,9 @@
                   </div>
                    </div>
                </div>
-            </div>
+            </div>-->
          
-            <div class="row">
+<!--            <div class="row">
                <div class="col-md-4 col-sm-6">
                    <div class="row">
                   <div class="project">
@@ -354,9 +448,9 @@
                   </div>
                    </div>
                </div>
-            </div>
+            </div>-->
          
-            <div class="row">
+       <!--     <div class="row">
                <div class="col-md-4 col-sm-6">
                    <div class="row">
                   <div class="project">
@@ -381,10 +475,10 @@
                   </div>
                    </div>
                </div>
-            </div>
+            </div>-->
 
          
-            <div class="row">
+<!--            <div class="row">
                <div class="col-md-4 col-sm-6">
                    <div class="row">
                   <div class="project">
@@ -435,15 +529,51 @@
                   <h3>BAHRAIN</h3>
                   </div>
                   </div>
-               </div>
+               </div>-->
             </div>     
         </div>
       </div>
    </div>
   </div>
    
+   <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-8">
+            <div class="modal-body">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                    </ol>
+                    <p class="address">Doha Sports City</p>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img class="" id="img1" src="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+                <div class="col-md-3">
+                    <p class="address">Doha Sports City</p>
+                    <p class="address1">Doha Sports City</p>
+                    <p class="address2">Doha Sports City</p>
+                    <p class="phone">Doha Sports City</p>
+                    <p class="fax">Doha Sports City</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>  
    
-      <script src="http://maps.googleapis.com/maps/api/js"></script>
+   
+<!--      <script src="http://maps.googleapis.com/maps/api/js"></script>
       <script>
          function initialize() {
             var mapOptions = {
@@ -465,8 +595,130 @@
          google.maps.event.addDomListener(window, 'resize', initialize);
          google.maps.event.addDomListener(window, 'load', initialize)
          
-      </script>
-   <script>
+      </script>-->
+           
+    <script>
+        
+        function getvalueModel(catched)
+    {
+        var sendmodel = $(catched).attr('src');
+        sendmodel=sendmodel.split('/');
+        var need = sendmodel.length-1;
+        var store =  sendmodel[need];
+        var imgPath1= [];
+        $.ajax({
+            type:'post',
+            url: "<?=site_url('SedarCtr/getFancybox');?>",
+            data:{store:store},
+            dataType:'json',
+            success: function (json){
+            var countJson=json.length;
+            var imageValue="";
+            for(var j=0;j<countJson;j++){
+                imageValueNew=json[j].image;    
+                imageValue=imageValueNew+','+imageValue; 
+            }
+            
+             //alert(imageValue);
+            
+            var newImageValue=imageValue.split(",");
+            $('.carousel-indicators').empty();
+            $('.carousel-inner').empty();
+            var lengthValue=newImageValue.length;
+            var imagePath=new Array();
+            for(var i=0;i<lengthValue;i++){
+            image=newImageValue[i];
+            if (image!="") {
+                imagePath.push('http://localhost/Global_Admin/uploads/'+image);
+            }
+            }
+
+            var lengthValueNew=imagePath.length;
+            for(var i=0;i<lengthValueNew;i++){
+            image=imagePath[i];
+            if (i==0) {
+                $('.carousel-indicators').append('<li data-target="#myCarousel" data-slide-to="'+i+'" class="active"></li>');
+                $('.carousel-inner').append('<div class="item active"><img class="" id="img'+i+'" src="'+image+'"></div>');
+            }else{
+                $('.carousel-indicators').append('<li data-target="#myCarousel" data-slide-to="'+i+'" class=""></li>');
+                $('.carousel-inner').append('<div class="item"><img class="" id="img'+i+'" src="'+image+'"></div>');
+            }
+            }
+            
+           var address=json[0].addresstitle;
+            var  address1=json[0].address1;    
+            var  address2=json[0].address2;    
+           var fax=json[0].fax;    
+           var phone=json[0].phone;
+           alert(address);
+           $('.address').text(address);
+           $('.address1').text(address1);
+           $('.address2').text(address2);
+           $('.phone').text(fax);
+           $('.fax').text(phone);
+
+           
+        }
+        });  
+    }
+
+        
+        
+    $('.country').change(function() { 
+    var codecountry=$(this).find("option:selected").val();
+    //alert(codecountry);
+    $.ajax({
+	
+	type:'post',
+	url: "<?=site_url('SedarCtr/findState');?>",
+	data:{codecountry:codecountry},
+	success: function (response){
+	
+	$('.state').html(response);
+	}
+	
+    });
+   }); 
+        
+    $('.country').change(function() { 
+    var codestore=$(this).find("option:selected").val();
+    alert(codestore);
+    $.ajax({
+	
+	type:'post',
+	url: "<?=site_url('SedarCtr/findStore');?>",
+	data:{codestore:codestore},
+	success: function (response){
+	
+	$('.storeimage').html(response);
+	}
+	
+    });
+   });    
+       
+       
+    $('.country').change(function() { 
+    var getimagecount=$(this).find("option:selected").val();
+    alert(getimagecount);
+    $.ajax({
+	
+	type:'post',
+	url: "<?=site_url('SedarCtr/findStorecount');?>",
+	data:{getimagecount:getimagecount},
+	success: function (response){
+	
+	$('.getimagecounter').html(response);
+	}
+	
+    });
+   });    
+        
+        
+    </script>  
+      
+      
+      
+    <script>
       $(function(){
       
       $('#myId1').data('holder',$('#myId1').attr('placeholder'));

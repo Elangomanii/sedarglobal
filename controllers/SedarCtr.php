@@ -20,7 +20,8 @@ class SedarCtr extends CI_Controller {
         $data['TermsName']=$this->SedarModel->getTermsTable();
 	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['getnews']=$this->SedarModel->getnews();
-	
+	$data['country']=$this->SedarModel->getcountry();
+        $data['state']=$this->SedarModel->getstate();
 	$data['brands']=$this->SedarModel->getBrandsTable();
 	//print_r($data['getSlider']);
 	//exit;
@@ -45,6 +46,8 @@ class SedarCtr extends CI_Controller {
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
 	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
+	$data['country']=$this->SedarModel->getcountry();
+        $data['state']=$this->SedarModel->getstate();
 	$this -> load -> view('UI/Contact',$data);
 	$this->load->view('footer',$data);
 	    
@@ -56,6 +59,8 @@ class SedarCtr extends CI_Controller {
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
 	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
+	$data['country']=$this->SedarModel->getcountry();
+        $data['state']=$this->SedarModel->getstate();
 	$this->load->view('UI/FranchisingOpportunities',$data);
 	$this->load->view('footer',$data);
     }
@@ -67,19 +72,21 @@ class SedarCtr extends CI_Controller {
 	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$data['clientDetails']=$this->SedarModel->clientDetails();
+	$data['country']=$this->SedarModel->getcountry();
+        $data['state']=$this->SedarModel->getstate();
 	$this->load->view('UI/Clients',$data);
 	$this->load->view('footer',$data);
     }
     
-    function Stores()
-    {
-	$this->load->view('header');
-	$data['BrandsName']=$this->SedarModel->getBrandsTable();
-	$data['productsName']=$this->SedarModel->getProductsTable();
-	$data['TermsName']=$this->SedarModel->getTermsTable();
-	$this->load->view('UI/Stores',$data);
-	$this->load->view('footer',$data);
-    }
+//    function Stores()
+//    {
+//	$this->load->view('header');
+//	$data['BrandsName']=$this->SedarModel->getBrandsTable();
+//	$data['productsName']=$this->SedarModel->getProductsTable();
+//	$data['TermsName']=$this->SedarModel->getTermsTable();
+//	$this->load->view('UI/Stores',$data);
+//	$this->load->view('footer',$data);
+//    }
     function Projects()
     {
 	$this->load->view('header');
@@ -89,6 +96,8 @@ class SedarCtr extends CI_Controller {
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$data['projectTitle']=$this->SedarModel->getTermsTable();
 	$data['ProjectDetails']=$this->SedarModel->projectDetails();
+	$data['country']=$this->SedarModel->getcountry();
+        $data['state']=$this->SedarModel->getstate();
 	$this->load->view('UI/Projects',$data);
 	$this->load->view('footer',$data);
     }
@@ -103,6 +112,8 @@ class SedarCtr extends CI_Controller {
 	$data['ProductAccessories']=$this->SedarModel->FetchProductAccessories();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
 	$data['allProducts']=$this->SedarModel->getAllProduct();
+	$data['country']=$this->SedarModel->getcountry();
+        $data['state']=$this->SedarModel->getstate();
 	$this->load->view('header');
 	$this->load->view('UI/ProductSearch',$data);
 	$this->load->view('footer',$data);
@@ -186,6 +197,8 @@ class SedarCtr extends CI_Controller {
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
 	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
+	$data['country']=$this->SedarModel->getcountry();
+        $data['state']=$this->SedarModel->getstate();
 	$this->load->view('UI/Brands',$data);
 	$this->load->view('footer',$data);
     }
@@ -240,4 +253,144 @@ class SedarCtr extends CI_Controller {
 	$this->load->view('UI/Drapes',$data);
 	$this->load->view('footer');
     }
+    //Hakkim Ctrl st
+     function findState()
+    {
+ $cntCode=$_POST['codecountry'];
+ $sql="SELECT * FROM ourstate where CountryCode='$cntCode'";
+ $query = $this->db->query($sql)->result_array();
+ ?>
+  <option>Select State</option>
+  <?php
+ foreach($query as $row)
+ {
+     ?>
+    
+     <option value="<?php echo $row['StateCode']?>"> <?php echo $row['StateName']?> </option>
+     <?php 
+ }
+    }
+    
+    function findStore()
+    {
+ $path ='http://localhost/Global_Admin/uploads/';
+ 
+ $cntCode=$_POST['codestore'];
+ $sql="SELECT * FROM store_image where country='$cntCode'";
+ $query = $this->db->query($sql)->result_array();
+ ?>
+  <?php
+ foreach($query as $row)
+ {
+     ?>
+ <div class="col-md-4 col-sm-6">
+ <div class="row">
+            <div class="project">
+    <img class="img-responsive" onClick="getvalueModel($(this));" data-toggle="modal" data-target="#myModal" src="<?php echo $path.$row['textImage'];?>">
+     <h3><?php echo $row['addresstitle']?></h3>
+     </div>
+ </div>
+        
+ </div>
+     <?php 
+ }
+ 
+ 
+    }
+    
+    function findStorecount()
+    {
+ 
+ $cntCode=$_POST['getimagecount'];
+ $sql="SELECT * FROM store_image where country='$cntCode'";
+ $query = $this->db->query($sql)->result_array();
+ $count=0;
+ $resultcont=0;
+  foreach ($query as $row)
+            {
+                
+            $getimage  = $row['textImage'];
+     
+
+            if(!empty($getimage))
+            {
+             $resultcont = $count + count($getimage);
+    
+            }
+     else{
+  
+  return $resultcont;
+     }
+     
+               $count++;
+     }
+     
+     if($resultcont==0){
+  ?>
+  <p>0 stores</p>
+  <?php
+     }else{
+ ?> 
+ <p><?php echo $resultcont;?> stores</p>
+ 
+ <?php
+     }
+     }
+    
+    function getFancybox()
+    {
+ $path ='http://localhost/Global_Admin/uploads/';
+ 
+ $fancyCode=$_POST['store'];
+ $sql="SELECT * FROM store_image where textImage='$fancyCode'";
+ $query = $this->db->query($sql)->result_array();
+ echo json_encode($query);
+ //print"<pre>";print_r($query);
+ //exit;
+    }
+    
+    
+     function footerStore($id)
+    {
+ 
+ $sql="SELECT * FROM store_image where country='$id'";
+ $data['getfooter'] = $this->db->query($sql)->result_array();
+ 
+ 
+ $data['country']=$this->SedarModel->getcountry();
+ $data['state']=$this->SedarModel->getstate();
+ //$data['getStory']=$this->SedarModel->getStores();
+ $data['BrandsName']=$this->SedarModel->getBrandsTable();
+ $data['TermsName']=$this->SedarModel->getTermsTable();
+ //print"<pre>";
+ //print_r($data['getfooter']);
+ //exit;
+ 
+ $this->load->view('header');
+ $this->load->view('UI/Stores',$data);
+ 
+ $this->load->view('footer',$data);
+    }
+    
+    
+    
+    
+    function Stores()
+    {
+ 
+ $data['country']=$this->SedarModel->getcountry();
+ $data['state']=$this->SedarModel->getstate();
+ $data['getStory']=$this->SedarModel->getStores();
+ $data['BrandsName']=$this->SedarModel->getBrandsTable();
+ $data['TermsName']=$this->SedarModel->getTermsTable();
+ //print"<pre>";
+ //print_r($data['country']);
+ //exit;
+ //
+ $this->load->view('header');
+ $this->load->view('UI/Stores',$data);
+ 
+ $this->load->view('footer',$data);
+    }
+    //Hakkim Ctrl end
 }

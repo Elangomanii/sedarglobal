@@ -349,5 +349,38 @@ class SedarModel extends CI_Model {
 	$select= "SELECT * FROM sedarstorecompany";
 	return $this->db->query($select)->result_array();
     }
+    //hakkim mod st
+    function getcountry()
+ 
+ {
+     $sql="SELECT * FROM ourcountry";
+     return $query = $this->db->query($sql)->result_array();
+
+ }
+ 
+ function getstate()
+ 
+ {
+     $sql="SELECT * FROM ourstate";
+     return $query = $this->db->query($sql)->result_array();
+     
+ }
+ 
+  function getcity()
+ 
+ {
+     $sql="SELECT * FROM ourcity";
+     return $query = $this->db->query($sql)->result_array();
+     
+ }
+ 
+ function getStores()
+ {
+     
+     $sql="select * from store_image" ;
+     return $result=$this->db->query($sql)->result_array();
+        
+ }
+    //hakkim mod end
     
 }
