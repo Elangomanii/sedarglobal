@@ -1,4 +1,12 @@
+<style>
+    .pageBtn { 
+        background-color: #666666;
+        border-color: #10181f;
+        color: #fff;
+    }
+</style>
 <body>
+    <input type="hidden" id="status" value="<?php echo $id;?>">
     <div class="container-fluid">
          <div class="row">
             <div class="header">
@@ -85,7 +93,6 @@
                                                 <a href="<?php echo base_url('SedarCtr/Brands/'.$NameList['id']);?>"><?php echo $NameList['name']?></a>
                                             </li>
                                             <?php } ?>
-                                            
                                         </div>
                                         <div class="col-md-2">
                                             <li class="dropdown-header">EXPLORE <br> BY PRODUCTS</li>
@@ -198,7 +205,7 @@
                                    <div class="cell">
                                       <label>BRAND</label>
                                       <div class="select-box">
-                                        <select data-rel="edit-field-brand-tid" name="brandName[]" class="select3" title="Select a brand" onchange="productSearch()">
+                                        <select data-rel="edit-field-brand-tid" name="brandName[]" class="select3" title="Select a brand" onchange="productSearch(pageNumber)">
                                             <option value="">Option</option>
                                             <?php foreach($BrandsName as $row) { ?>
                                             <option value="<?php echo $row['id']?>"><?php echo $row['name'];?></option>
@@ -213,10 +220,10 @@
                                    <div class="cell">
                                       <label>PRODUCT</label>
                                       <div class="select-box">
-                                         <select data-rel="edit-field-type-tid" name="productName[]" class="select3" title="Select a product" onchange="productSearch()">
+                                         <select data-rel="edit-field-type-tid" name="productName[]" class="select3" title="Select a product" onchange="productSearch(pageNumber)">
                                             <option value="">option</option>
-                                            <?php foreach($ProductAccessories as $acc) { ?>
-                                            <option value="<?php echo $acc['id'];?>"> <?php echo $acc['AccessoriesName'];?> </option>
+                                            <?php foreach($ProductCategory as $acc) { ?>
+                                            <option value="<?php echo $acc['id'];?>"> <?php echo $acc['name'];?> </option>
                                             <?php } ?>
                                          </select>
                                          <div class="add-box">
@@ -228,7 +235,7 @@
                                    <div class="cell">
                                       <label>MATERIAL</label>
                                       <div class="select-box">
-                                         <select data-rel="edit-field-material-tid-i18n" name="materialName[]" class="select3" title="Select material" onchange="productSearch()">
+                                         <select data-rel="edit-field-material-tid-i18n" name="materialName[]" class="select3" title="Select material" onchange="productSearch(pageNumber)">
                                             <option value="">option</option>
                                             <?php foreach($ProductMaterial as $option) {?>
                                                 <option value="<?php echo $option['id'];?>"><?php echo $option['materialName'];?></option>
@@ -243,7 +250,7 @@
                                    <div class="cell">
                                       <label>ACCESSORIES</label>
                                       <div class="select-box">
-                                         <select data-rel="edit-field-accessories-tid-i18n" name="accessoriesName[]" class="select3" title="Select accessories" onchange="productSearch()">
+                                         <select data-rel="edit-field-accessories-tid-i18n" name="accessoriesName[]" class="select3" title="Select accessories" onchange="productSearch(pageNumber)">
                                             <option value="">option</option>
                                             <?php foreach($ProductAccessories as $option) {?>
                                                 <option value="<?php echo $option['id'];?>"><?php echo $option['AccessoriesName'];?></option>
@@ -258,7 +265,7 @@
                                    <div class="cell motorization-cell">
                                       <label>MOTORIZATION</label>
                                       <div class="select-box">
-                                         <select data-rel="edit-field-motorization-value-i18n" name="motorization" class="select3" title="Select"  onchange="productSearch()">
+                                         <select data-rel="edit-field-motorization-value-i18n" name="motorization" class="select3" title="Select"  onchange="productSearch(pageNumber)">
                                             <option value="">Option</option>
                                             <option value="1">Yes</option>
                                             <option value="0">No</option>
@@ -435,56 +442,22 @@
       
    <div class="container">
       <div class="col-md-offset-1 col-md-10">
+        <span id="itemCount"></span>
+        <div class="col-md-4 pull-right">
+            <div class="toolbar">
+                <div class="pager"><span>Page</span>
+                    <div class="item-list">
+                        <ul class="pager" id="pager">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="product-content">
             <p>PRODUCTS</p>
             <div class="row" id="productSearchResult">
-                <?php foreach($allProducts as $rowData) { ?>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="row">
-                        <div class="fujikawa-hover">
-                            <a href="#">
-                            <img class="img-responsive" src="<?php echo base_url();?>assets/images/fujikawa/FAB05.jpg">
-                            <?php $result = $this->SedarModel->fetchBranName($rowData['id']);?>
-                            <h2><?php echo $result[0]['name'];?></h2>
-                            <h3><?php echo $rowData['productName'];?></h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <?php } ?>
-                <!--<div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="row">
-                        <div class="fujikawa-hover">
-                            <a href="#">
-                            <img class="img-responsive" src="<?php echo base_url();?>assets/images/fujikawa/roma-Fuji2.jpg">
-                            <h2>FUJIKAWA</h2>
-                            <h3>Roman Blinds</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="row">
-                        <div class="fujikawa-hover">
-                            <a href="#">
-                            <img class="img-responsive" src="<?php echo base_url();?>assets/images/fujikawa/fujikawa4.jpg">
-                            <h2>FUJIKAWA</h2>
-                            <h3>Wooden Venetian Blinds</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="row">
-                        <div class="fujikawa-hover">
-                            <a href="#">
-                            <img class="img-responsive" src="<?php echo base_url();?>assets/images/fujikawa/HC2.jpg">
-                            <h2>FUJIKAWA</h2>
-                            <h3>Honeycomb Blinds</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>-->
+                
             </div>
         </div>
         <div class="butn" style="text-align: center; padding-bottom: 20px">
@@ -495,26 +468,34 @@
    </div>
 </div>
 <script>
-function productSearch() {
+var pageNumber = 0;
+var total_page =null;
+$(document).ready(function(e){
+    var status = $('#status').val();
+    $('select[name="productName[]"]').val(status);
+    productSearch(pageNumber);
+
+});
+function productSearch(pageNumber) {
     var brand = new Array;
     var product = new Array;
     var material = new Array;
     var accessories = new Array;
     var motorization = new Array;
+    var outPut = '';
+    var pagination;
+    var pageNumberArray = '';
     $('select[name="brandName[]"]').each(function(){
         brand.push($(this).val());
     });
     $('select[name="productName[]"]').each(function(){
         product.push($(this).val());
-        
     });
     $('select[name="materialName[]"]').each(function(){
         material.push($(this).val());
-        
     });
     $('select[name="accessoriesName[]"]').each(function(){
         accessories.push($(this).val());
-        
     });
     motorization =  $('select[name="motorization"]').val();
     if (brand == '') {
@@ -539,15 +520,51 @@ function productSearch() {
     }
     $.ajax({
         type: "POST",
+        dataType: 'json',
+        async: false,
         url:"<?php echo site_url('SedarCtr/ajaxProductSearch')?>",
-        data:{brand:brand,product:product,material:material,accessories:accessories,motorization:motorization},
-        success: function (response) {
-            $('#productSearchResult').html(response)
-	}
-    });   
+        data:{brand:brand,product:product,material:material,accessories:accessories,motorization:motorization,pageNumber:pageNumber},
+        success: function (json) {
+            var rowData = json[0].rows;
+            $('#total_page').text(json[0].pageTotal);
+            pagination = json[0].pageTotal;
+            $('#itemCount').text(json[0].totalCount+' items');
+            if(json[0].totalCount != 0){
+                $.each(rowData, function (key, data) {
+                    $.ajax({
+                            type: "POST",
+                            dataType: 'json',
+                            async: false,
+                            url: "<?php echo site_url('SedarCtr/fetchBranName'); ?>",
+                            data: {productId:data.id},
+                            success: function(json) {
+                                outPut = outPut + '<div class="col-md-3 col-sm-6 col-xs-12"><div class="row"><div class="fujikawa-hover"><a href="#"><img class="img-responsive" src="<?php echo base_url();?>assets/images/fujikawa/FAB05.jpg"><h2>'+json[0].branName+'</h2><h3>'+data.productName+'</h3></a></div></div></div>';
+                            }
+                        });
+                });
+            }else{
+                $("#productSearchResult").append('<div class="alert alert-info span12" style="text-align:center; padding: 30px;"><strong>THERE IS NO DATA TO DISPLAY!!!</strong></div>');
+            }
+        }
+    });
+    $('#productSearchResult').html(outPut);
+        for (var i=0; i < pagination; i++) {
+            if (i == pageNumber) {
+                pageNumberArray = pageNumberArray + '<li class="pager-current active"> '+i+' </li>';    
+            }else{
+                pageNumberArray = pageNumberArray + '<li class="pager-item" onclick="pageChange('+i+')" style="cursor:pointer"> '+i+' </li>';    
+            }
+        }
+        if (pagination != '0') {
+            $("#pager").html(pageNumberArray);    
+        }else{
+            $("#pager").empty();    
+        }
+        
+    
 }
-function removeProduct() {
-    productSearch();
+function pageChange(pageNumber){
+    productSearch(pageNumber)    
 }
 
 </script>

@@ -86,9 +86,10 @@ class SedarCtr extends CI_Controller {
 	$this->load->view('UI/Projects',$data);
 	$this->load->view('footer',$data);
     }
-    
-    function ProductSearch()
+    //product search author pravinkumar
+    function ProductSearch($id)
     {
+	$data['id']=$id;
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
 	$data['ProductCategory']=$this->SedarModel->FetchProductCategory();
 	$data['ProductMaterial']=$this->SedarModel->FetchProductMaterial();
@@ -99,29 +100,39 @@ class SedarCtr extends CI_Controller {
 	$this->load->view('UI/ProductSearch',$data);
 	$this->load->view('footer',$data);
     }
+    function fetchBranName(){
+	$this->output->set_content_type('application/json');
+	$id = $_POST['productId'];
+	$data = $this->SedarModel->fetchBranName($id);
+	$data = array(
+	    'branName' => $data[0]['name'],
+	);
+	echo json_encode(array($data));
+    }
     function ajaxProductSearch(){
+	
+	$this->output->set_content_type('application/json');
+	$pageNumber = $_POST['pageNumber'];
+	$perPage = 2;
+	$position = ($pageNumber*$perPage);
 	$brand = array_filter(explode(',',$_POST['brand']));
 	$product = array_filter(explode(',',$_POST['product']));
 	$material = array_filter(explode(',',$_POST['material']));
 	$accessories = array_filter(explode(',',$_POST['accessories']));
 	$motorization = $_POST['motorization'];
-	$data = $this->SedarModel->ajaxProductSearch($brand,$product,$material,$accessories,$motorization);
-	foreach($data as $rowData) {
-	?>
-	    <div class="col-md-3 col-sm-6 col-xs-12">
-		<div class="row">
-		    <div class="fujikawa-hover">
-			<a href="#">
-			<img class="img-responsive" src="<?php echo base_url();?>assets/images/fujikawa/FAB05.jpg">
-			<?php $result = $this->SedarModel->fetchBranName($rowData['id']); ?>
-			<h2><?php echo $result[0]['name'];?></h2>
-			<h3><?php echo $rowData['productName'];?></h3>
-			</a>
-		    </div>
-		</div>
-	    </div>
-	<?php }
+	$data = $this->SedarModel->ajaxProductSearch($brand,$product,$material,$accessories,$motorization,$position,$perPage);
+	$count = $this->SedarModel->searchCount($brand,$product,$material,$accessories,$motorization);
+	$total = ceil(count($count) / $perPage);
+	$data = array(
+	    'totalCount' => count($count),
+	    'pageTotal' => $total,
+	    'rows' => $data
+	);
+	echo json_encode(array($data));
     }
+    //pravinkumar end
+    
+
     function Product($brand,$proName)
     {
 	//$recentlyViewedData = array(
