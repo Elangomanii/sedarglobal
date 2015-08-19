@@ -1,0 +1,23 @@
+.pro-contact h2{
+    font: 24px/33px "Arial";
+    margin: 0 0 17px;
+}
+
+.pro-contact p{
+    margin: 0 0 26px;
+    text-align: justify;
+    /*font: 1.6em/21px 'Arial';*/
+    font-size: 16px;
+    
+}
+.pro-contact a{
+     color: #fc992b;
+     text-decoration: none;
+}
+.pro-contact a:hover{
+     color: #757575;
+}
+
+.project-bottom{
+    padding-bottom: 20px;
+}

@@ -377,7 +377,6 @@ class SedarCtr extends CI_Controller {
     
     function Stores()
     {
- 
  $data['country']=$this->SedarModel->getcountry();
  $data['state']=$this->SedarModel->getstate();
  $data['getStory']=$this->SedarModel->getStores();

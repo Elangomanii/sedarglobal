@@ -40,7 +40,8 @@
 
 $route['default_controller'] = "SedarCtr";
 //$route['404_override'] = '';
-
+$route['^(en|ar)/(.+)$'] = "$2";
+$route['^(en|ar)$'] = $route['default_controller'];
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

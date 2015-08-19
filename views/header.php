@@ -4,25 +4,33 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="icon" href="<?php echo base_url();?>assets/images/favicon.ico">
+      <link rel="icon" href="<?php echo site_url('assets/images/favicon.ico');?>">
       <title>Sedar Home Decor in Dubai and the GCC - Giving You Total Commitment</title>
-      <link href="<?php echo base_url();?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/tab-content/css/tab.css" />
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/similar.css" />
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/tab-change.css" />
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/menu.css" />
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/Client.css" />
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/contact.css" />
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/Stores.css" />
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/projects.css" />
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/fujikawa.css" />
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/Drapes.css" />
+      <link href="<?php echo site_url('assets/dist/css/bootstrap.min.css');?>" rel="stylesheet">
+      <link href="<?php echo site_url('assets/css/style.css');?>" rel="stylesheet">
+      <?php if($this->uri->segment(1, 0)=='ar')
+         { ?>
+      <link href="<?php echo site_url('assets/css/style_rtl.css');?>" rel="stylesheet">      
+      <?php } else {?>
+      <link href="<?php echo site_url('assets/css/style.css');?>" rel="stylesheet">
+      <?php } ?>
+      <link rel="stylesheet" href="<?php echo site_url('assets/tab-content/css/tab.css');?>" />
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/similar.css');?>" />
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/tab-change.css');?>" />
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/menu.css');?>" />
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/Client.css');?>" />
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/contact.css');?>" />
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/Stores.css');?>" />
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/projects.css');?>" />
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/fujikawa.css');?>" />
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/Drapes.css');?>" />
       <!--<link rel="stylesheet" href="<?//php echo base_url();?>assets/stores/css/stylee.css" />-->
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/product-search.css" />
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/video.css" />
-      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/footer.css" />
-
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/product-search.css');?>" />
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/video.css');?>" />
+      <?php if($this->uri->segment(1, 0)=='ar')
+         { ?>
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/footer.css');?>" />
+      <?php } else {?>
       <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-1.9.1.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url();?>assets/dist/js/bootstrap.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url();?>assets/sites/all/themes/sedar/js/jquery.minc011.js"></script>      

@@ -1,6 +1,5 @@
 <?php
 $path="http://localhost/Global_Admin/uploads/";
-
 ?>
 <body>
     <div class="container-fluid">
@@ -15,13 +14,13 @@ $path="http://localhost/Global_Admin/uploads/";
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="<?php echo base_url();?>SedarCtr/index"><img class="img-responsive" src="<?php echo base_url();?>assets/images/Sedarlogo.png"></a>
+                        <a class="navbar-brand" href="<?php echo site_url('SedarCtr/index');?>"><img class="img-responsive" src="<?php echo base_url();?>assets/images/Sedarlogo.png"></a>
                      </div>
                      <div id="navbar" class="navbar-collapse collapse">
                         <!--<div class="text-color">-->
                            <ul class="nav navbar-nav navbar-right">
                               <li class="active">
-                                 <a href="<?php echo base_url();?>SedarCtr/index">HOME</a>
+                                 <a href="<?php echo site_url('SedarCtr/index');?>">HOME</a>
                               </li>
                               <li class="dropdown">
                                 <a class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" href="#">
@@ -49,18 +48,17 @@ $path="http://localhost/Global_Admin/uploads/";
                                         <div class="col-md-5">
                                             <div class="about-hover">
                                             <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Projects">PROJECTS&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                                                <a href="<?php echo site_url('SedarCtr/Projects');?>">PROJECTS&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
                                                 
                                             </li>
                                             <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Clients">CLIENTS&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                                                <a href="<?php echo site_url('SedarCtr/Clients');?>">CLIENTS&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
                                             </li>
                                             </div>
                                         </div>
                                         </div>
                                 </ul>
                               </li>
-
                               <li class="dropdown">
                                 <a class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" href="#">
                                     PRODUCTS
@@ -86,7 +84,7 @@ $path="http://localhost/Global_Admin/uploads/";
                                             <li class="dropdown-header">EXPLORE<br> BY BRAND</li>
                                             <?php foreach($BrandsName as $NameList){?>
                                             <li>
-                                                <a href="<?php echo base_url('SedarCtr/Brands/'.$NameList['id']);?>"><?php echo $NameList['name']?></a>
+                                                <a href="<?php echo site_url('SedarCtr/Brands/'.$NameList['id']);?>"><?php echo $NameList['name']?></a>
                                             </li>
                                             <?php } ?>
                                         </div>
@@ -94,7 +92,7 @@ $path="http://localhost/Global_Admin/uploads/";
                                             <li class="dropdown-header">EXPLORE <br> BY PRODUCTS</li>
                                             <?php foreach($productsName as $name){?>
                                             <li>
-                                                <a href="<?php echo base_url('SedarCtr/ProductSearch/'.$name['id']);?>"><?php echo $name['name']?></a>
+                                                <a href="<?php echo site_url('SedarCtr/ProductSearch/'.$name['id']);?>"><?php echo $name['name']?></a>
                                             </li>
                                             <?php } ?>
                                         </div>
@@ -111,13 +109,13 @@ $path="http://localhost/Global_Admin/uploads/";
                               </li>
                             
                             <li>
-                                 <a href="<?php echo base_url();?>SedarCtr/Stores">STORES</a>
+                                 <a href="<?php echo site_url('SedarCtr/Stores');?>">STORES</a>
                               </li>
                               <li>
-                                 <a href="<?php echo base_url();?>SedarCtr/ContactUs">CONTACT</a>
+                                 <a href="<?php echo site_url('SedarCtr/ContactUs');?>">CONTACT</a>
                               </li>                              
                               <li>
-                                 <a href="<?php echo base_url();?>SedarCtr/Franchising_Opportunities">FRANCHISING OPPORTUNITIES</a>
+                                 <a href="<?php echo site_url('SedarCtr/Franchising_Opportunities');?>">FRANCHISING OPPORTUNITIES</a>
                               </li>
 
                               <li class="dropdown">
@@ -161,7 +159,7 @@ $path="http://localhost/Global_Admin/uploads/";
                               </li>
                               
                               <li class="">
-                                 <a href="<?php echo base_url();?>SedarCtr/index">English</a>
+                                 <a href="<?php echo site_url('ar');?>">العربية</a>
                               </li>                              
                               
                               
@@ -459,5 +457,6 @@ $path="http://localhost/Global_Admin/uploads/";
             </div>
         </div>
       </div>
+
 
 

@@ -1,0 +1,26 @@
+.feedback{
+    padding-top: 3px;
+    padding-bottom: 20px;
+}
+.feedback a{
+    font: 14px/16px "Arial";
+    letter-spacing: 1px;
+    margin: 0 0 22px;
+    text-decoration: none;
+    color: #10181f;
+}
+
+.feedback a:hover{
+    
+}
+
+#feed-detail{
+    color: #10181f;
+    display: block;
+    margin: 0 0 3px;
+     font-weight: normal !important;
+     
+    }
+.contact-map{
+    height: 300px;
+}

@@ -11,13 +11,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="<?php echo base_url();?>SedarCtr/index"><img class="img-responsive" src="<?php echo base_url();?>assets/images/Sedarlogo.png"></a>
+                        <a class="navbar-brand" href="<?php echo site_url('SedarCtr/index');?>"><img class="img-responsive" src="<?php echo base_url();?>assets/images/Sedarlogo.png"></a>
                      </div>
                      <div id="navbar" class="navbar-collapse collapse">
                         <!--<div class="text-color">-->
                            <ul class="nav navbar-nav navbar-right">
                               <li class="">
-                                 <a href="<?php echo base_url();?>SedarCtr/index">HOME</a>
+                                 <a href="<?php echo site_url('SedarCtr/index');?>">HOME</a>
                               </li>
                               <li class="dropdown">
                                 <a class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" href="#">
@@ -45,11 +45,11 @@
                                         <div class="col-md-5">
                                             <div class="about-hover">
                                             <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Projects">PROJECTS&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                                                <a href="<?php echo site_url('SedarCtr/Projects');?>">PROJECTS&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
                                                 
                                             </li>
                                             <li>
-                                                <a href="<?php echo base_url();?>SedarCtr/Clients">CLIENTS&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                                                <a href="<?php echo site_url('SedarCtr/Clients');?>">CLIENTS&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
                                             </li>
                                             </div>
                                         </div>
@@ -82,7 +82,7 @@
                                             <li class="dropdown-header">EXPLORE<br> BY BRAND</li>
                                             <?php foreach($BrandsName as $NameList){?>
                                             <li>
-                                                <a href="<?php echo base_url('SedarCtr/Brands/'.$NameList['id']);?>"><?php echo $NameList['name']?></a>
+                                                <a href="<?php echo site_url('SedarCtr/Brands/'.$NameList['id']);?>"><?php echo $NameList['name']?></a>
                                             </li>
                                             <?php } ?>
                                            
@@ -91,7 +91,7 @@
                                             <li class="dropdown-header">EXPLORE <br> BY PRODUCTS</li>
                                             <?php foreach($productsName as $name){?>
                                             <li>
-                                                <a href="<?php echo base_url('SedarCtr/ProductSearch/'.$name['id']);?>"><?php echo $name['name']?></a>
+                                                <a href="<?php echo site_url('SedarCtr/ProductSearch/'.$name['id']);?>"><?php echo $name['name']?></a>
                                             </li>
                                             <?php } ?>
                                         </div>
@@ -108,13 +108,13 @@
                               </li>
                             
                             <li>
-                                 <a href="<?php echo base_url();?>SedarCtr/Stores">STORES</a>
+                                 <a href="<?php echo site_url('SedarCtr/Stores');?>">STORES</a>
                               </li>
                               <li class="active">
-                                 <a href="<?php echo base_url();?>SedarCtr/ContactUs">CONTACT</a>
+                                 <a href="<?php echo site_url('SedarCtr/ContactUs');?>">CONTACT</a>
                               </li>                              
                               <li>
-                                 <a href="<?php echo base_url();?>SedarCtr/Franchising_Opportunities">FRANCHISING OPPORTUNITIES</a>
+                                 <a href="<?php echo site_url('SedarCtr/Franchising_Opportunities');?>">FRANCHISING OPPORTUNITIES</a>
                               </li>
 
                               <li class="dropdown">
@@ -158,7 +158,7 @@
                               </li>
                               
                               <li class="">
-                                 <a href="<?php echo base_url();?>SedarCtr/index">English</a>
+                                 <a href="<?php echo site_url('SedarCtr/index');?>">English</a>
                               </li>                              
                               
                               
@@ -169,21 +169,16 @@
             </nav>
          </div>
       </div>
-    
-    
-    
    <div class="breadcrumbs">
       <div class="container">
          <ul>
             <li>
-               <a href="<?php echo base_url();?>SedarCtr/index">Home</a>
+               <a href="<?php echo site_url('SedarCtr/index');?>">Home</a>
             </li>
             <li>Contact</li>
          </ul>
       </div>
    </div>
-   
-   
    <div class="background-color">
    <div class="header-cont">
       <div class="container">
@@ -194,7 +189,6 @@
          <?php }?>
       </div>
    </div>
-   
       <div class="container">
          <div class="col-md-offset-1 col-md-10">
             <div class="col-md-6">
@@ -216,13 +210,11 @@
          </div>
       </div>   
    </div>
-
-   
 <div class="background-product">
    <div class="container">
       <div class="col-md-offset-1 col-md-10">
         <div class="feedback">
-        <h3><a href="<?php echo base_url();?>SedarCtr/Feedback">FEEDBACK</a></h3>
+        <h3><a href="<?php echo site_url('SedarCtr/Feedback');?>">FEEDBACK</a></h3>
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -233,8 +225,6 @@
                         We read all feedback carefully, and we try to respond to all customers promptly.</p>
                     </div>
             </div>
-        
-        
          <form role="form">
                <div class="col-md-4">           
                   <div class="form-group">
@@ -273,10 +263,6 @@
          </div>
       </div>
    </div>   
-   
-
-   
-    
       <script src="http://maps.googleapis.com/maps/api/js"></script>
       <script>
          function initialize() {

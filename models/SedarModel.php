@@ -8,53 +8,125 @@ class SedarModel extends CI_Model {
     
     function getslider()
     {
-	$select= "SELECT * FROM slider";
-	return $this->db->query($select)->result_array(); 
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_slider";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM slider";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function BringProducts()
     {
-	$select= "SELECT * FROM products";
-	return $this->db->query($select)->result_array();        
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_products";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM products";
+	    return $this->db->query($select)->result_array();
+	}
     }
     
     function tab_brand()
     {
-	$select= "SELECT * FROM brands";
-	return $this->db->query($select)->result_array();        
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_brands";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	     $select= "SELECT * FROM brands";
+	    return $this->db->query($select)->result_array();
+	}
     }
     
     function tab_products()
     {
-	$select= "SELECT * FROM productCategory";
-	return $this->db->query($select)->result_array();        
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_productCategory";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM productCategory";
+	    return $this->db->query($select)->result_array();
+	}
     }
     
     function getnews()
     {
-	$select= "SELECT * FROM news";
-	return $this->db->query($select)->result_array();        
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_news";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM news";
+	    return $this->db->query($select)->result_array();
+	}
     }    
     
     function getBrands($brand)
     {
-	$select= "SELECT * FROM brands where id='$brand'";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_brands where id='$brand'";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM brands where id='$brand'";
+	    return $this->db->query($select)->result_array();
+	}
     }
 
     function getBrandsTable()
     {
-	$select= "SELECT * FROM brands where status='ENABLED' ORDER BY position";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_brands where status='ENABLED' ORDER BY position";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM brands where status='ENABLED' ORDER BY position";
+	    return $this->db->query($select)->result_array();
+	}
     }
     
     //pravinkuamr
-    function fetchBranName($id){
-	$select = "SELECT * FROM brands where id='$id'";
-	return $this->db->query($select)->result_array();
+    function fetchBranName($id)
+    {
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select = "SELECT * FROM ar_brands where id='$id'";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select = "SELECT * FROM brands where id='$id'";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function ajaxProductSearch($brand,$product,$material,$accessories,$motorization,$position,$perPage)
     {
-	$select = "SELECT * FROM products WHERE";
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select = "SELECT * FROM ar_products WHERE";
+	}
+	else
+	{
+	    $select = "SELECT * FROM products WHERE";
+	}
 	$brandCount = count($brand);
 	$productCount = count($product);
 	$materialCount = count($material);
@@ -148,7 +220,14 @@ class SedarModel extends CI_Model {
     }
     function searchCount($brand,$product,$material,$accessories,$motorization)
     {
-	$select = "SELECT * FROM products WHERE";
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select = "SELECT * FROM ar_products WHERE";
+	}
+	else
+	{
+	    $select = "SELECT * FROM products WHERE";
+	}
 	$brandCount = count($brand);
 	$productCount = count($product);
 	$materialCount = count($material);
@@ -243,144 +322,322 @@ class SedarModel extends CI_Model {
     
     function getProductsTable()
     {
-	$select= "SELECT * FROM productcategory ";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_productcategory ";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM productcategory ";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function getProduct($brand)
     {
-	$select= "SELECT * FROM products where brandId='$brand'";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_products where brandId='$brand'";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM products where brandId='$brand'";
+	    return $this->db->query($select)->result_array();
+	}
     }
     
     function getProductName($brand,$proName)
     {
-	$select= "SELECT * FROM products where brandId='$brand' and id='$proName'";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_products where brandId='$brand' and id='$proName'";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM products where brandId='$brand' and id='$proName'";
+	    return $this->db->query($select)->result_array();
+	}
     }
     
     function RecentProductViewList($recent)
     {
-	$select= "SELECT * FROM products where id='$recent'";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_products where id='$recent'";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM products where id='$recent'";
+	    return $this->db->query($select)->result_array();
+	}
     }
     
     function getTerms($terms)
     {
-	$select= "SELECT * FROM terms where id='$terms'";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_terms where id='$terms'";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM terms where id='$terms'";
+	    return $this->db->query($select)->result_array();
+	}
     }
     
     function getTermsTable()
     {
-	$select= "SELECT * FROM terms";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_terms";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM terms";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function getContactTable()
     {
-	$select= "SELECT * FROM contact";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+	{
+	    $select= "SELECT * FROM ar_contact";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM contact";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function getAllProduct()
     {
-	$select= "SELECT * FROM products";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_products";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM products";
+	    return $this->db->query($select)->result_array();
+	}
     }
-    
-   
     function projectDetails()
     {
-	$select= "SELECT * FROM about_us ";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_about_us ";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM about_us ";
+	    return $this->db->query($select)->result_array();
+	}
     }
      function clientDetails()
     {
-	$select= "SELECT * FROM clientoverview ";
-        return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_clientoverview ";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM clientoverview ";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function FetchFranchisingOpportunities()
     {
-	$select= "SELECT * FROM franchising_opportunities";
-	return $this->db->query($select)->result_array();	
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_franchising_opportunities";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM franchising_opportunities";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function getNewsData($id)
     {
-	$select= "SELECT * FROM news where id='$id'";
-	return $this->db->query($select)->result_array();        
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_news where id='$id'";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM news where id='$id'";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function FetchFeedbackDescription()
     {
-	$select= "SELECT * FROM feedback";
-	return $this->db->query($select)->result_array();     
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_feedback";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM feedback";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function FetchProductMaterial()
     {
-	$select= "SELECT * FROM sedarmaterial";
-	return $this->db->query($select)->result_array();        
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_sedarmaterial";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM sedarmaterial";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function FetchProductCategory()
     {
-	$select= "SELECT * FROM productcategory";
-	return $this->db->query($select)->result_array();        
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_productcategory";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM productcategory";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function FetchProductAccessories()
     {
-	$select= "SELECT * FROM sedaraccessories";
-	return $this->db->query($select)->result_array();        
+    	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_sedaraccessories";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM sedaraccessories";
+	    return $this->db->query($select)->result_array();
+	}
     }
     
     function FetchProjectsImages()
     {
-	$select= "SELECT * FROM about_project_img where status='ENABLED' ORDER BY position ";
-	return $this->db->query($select)->result_array();        
+     	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_about_project_img where status='ENABLED' ORDER BY position ";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM about_project_img where status='ENABLED' ORDER BY position ";
+	    return $this->db->query($select)->result_array();
+	}
     }
-    
     function FetchClientsImages()
     {
-	$select= "SELECT * FROM about_client_img where status='ENABLED' ORDER BY position";
-	return $this->db->query($select)->result_array();        
+       	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_about_client_img where status='ENABLED' ORDER BY position";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM about_client_img where status='ENABLED' ORDER BY position";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function SearchSedarCountryMap()
     {
-	$select= "SELECT * FROM Country where latitude='' and longitude=''";
-	return $this->db->query($select)->result_array();	
+    	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_Country where latitude='' and longitude=''";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM Country where latitude='' and longitude=''";
+	    return $this->db->query($select)->result_array();
+	}
     }
     function SedarStorList()
     {
-	$select= "SELECT * FROM sedarstorecompany";
-	return $this->db->query($select)->result_array();
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $select= "SELECT * FROM ar_sedarstorecompany";
+	    return $this->db->query($select)->result_array();
+	}
+	else
+	{
+	    $select= "SELECT * FROM sedarstorecompany";
+	    return $this->db->query($select)->result_array();
+	}
     }
     //hakkim mod st
     function getcountry()
- 
- {
-     $sql="SELECT * FROM ourcountry";
-     return $query = $this->db->query($sql)->result_array();
-
- }
- 
- function getstate()
- 
- {
-     $sql="SELECT * FROM ourstate";
-     return $query = $this->db->query($sql)->result_array();
-     
- }
- 
-  function getcity()
- 
- {
-     $sql="SELECT * FROM ourcity";
-     return $query = $this->db->query($sql)->result_array();
-     
- }
- 
- function getStores()
- {
-     
-     $sql="select * from store_image" ;
-     return $result=$this->db->query($sql)->result_array();
-        
- }
+    {
+	if($this->uri->segment(1, 0)=='ar')
+        {
+	    $sql="SELECT * FROM ar_ourcountry";
+	    return $query = $this->db->query($sql)->result_array();
+	}
+	else
+	{
+	    $sql="SELECT * FROM ourcountry";
+	    return $query = $this->db->query($sql)->result_array();
+	}
+    }
+    function getstate()
+    {
+       if($this->uri->segment(1, 0)=='ar')
+       {
+	    $sql="SELECT * FROM ar_ourstate";
+	    return $query = $this->db->query($sql)->result_array();
+	}
+	else
+	{
+	    $sql="SELECT * FROM ourstate";
+	    return $query = $this->db->query($sql)->result_array();
+	}
+    }
+    function getcity()
+    {	
+       if($this->uri->segment(1, 0)=='ar')
+       { 
+	    $sql="SELECT * FROM ar_ourcity";
+	    return $query = $this->db->query($sql)->result_array();
+	}
+	else
+	{
+	    $sql="SELECT * FROM ourcity";
+	    return $query = $this->db->query($sql)->result_array();
+	}
+    }
+    function getStores()
+    {
+       if($this->uri->segment(1, 0)=='ar')
+       { 
+	    $sql="select * from ar_store_image" ;
+	    return $result=$this->db->query($sql)->result_array();
+	}
+	else
+	{
+	    $sql="select * from store_image" ;
+	    return $result=$this->db->query($sql)->result_array();
+	}
+    }
     //hakkim mod end
     
 }
