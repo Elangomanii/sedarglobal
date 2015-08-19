@@ -1,7 +1,7 @@
 <div class="content-foot">
     <div class="container">
         <div class="col-md-offset-1 col-md-10">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="row">
                     <h2>STORES</h2>
                     <h3>Find a Sedar store</h3>

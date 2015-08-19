@@ -1,12 +1,17 @@
 <!DOCTYPE html>  
-<html lang="en">
+<html lang="en" <?php if($this->uri->segment(1, 0)=='ar'){ ?> dir="rtl" <?php } ?> >
    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="icon" href="<?php echo site_url('assets/images/favicon.ico');?>">
       <title>Sedar Home Decor in Dubai and the GCC - Giving You Total Commitment</title>
+      <?php if($this->uri->segment(1, 0)=='ar')
+      { ?>
+      <link href="<?php echo site_url('assets/dist/css/bootstrap_rtl.min.css');?>" rel="stylesheet">
+      <?php } else {?>
       <link href="<?php echo site_url('assets/dist/css/bootstrap.min.css');?>" rel="stylesheet">
+      <?php } ?>
       <link href="<?php echo site_url('assets/css/style.css');?>" rel="stylesheet">
       <?php if($this->uri->segment(1, 0)=='ar')
          { ?>
