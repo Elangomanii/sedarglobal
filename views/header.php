@@ -29,8 +29,10 @@
       <link rel="stylesheet" href="<?php echo site_url('assets/css/video.css');?>" />
       <?php if($this->uri->segment(1, 0)=='ar')
          { ?>
-      <link rel="stylesheet" href="<?php echo site_url('assets/css/footer.css');?>" />
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/footer_rtl.css');?>" />
       <?php } else {?>
+      <link rel="stylesheet" href="<?php echo site_url('assets/css/footer.css');?>" />
+      <?php } ?>
       <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-1.9.1.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url();?>assets/dist/js/bootstrap.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url();?>assets/sites/all/themes/sedar/js/jquery.minc011.js"></script>      
