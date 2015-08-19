@@ -180,6 +180,8 @@ class SedarCtr extends CI_Controller {
 	$data['BrandsName']=$this->SedarModel->getBrandsTable();
 	$data['productsName']=$this->SedarModel->getProductsTable();
 	$data['TermsName']=$this->SedarModel->getTermsTable();
+	$data['country']=$this->SedarModel->getcountry();
+        $data['state']=$this->SedarModel->getstate();
 	$this->load->view('UI/ProductBrand',$data);
 	$this->load->view('footer',$data);
     }

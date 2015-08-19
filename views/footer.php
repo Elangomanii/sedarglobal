@@ -43,13 +43,9 @@
                     </div>
                     <div class="col-sm-12">
                         <li><label>PRODUCTS</label></li>
-                        <li><a  href="<?php echo site_url('SedarCtr/Drapes');?>">Drapes</a></li>
-                        <li><a  href="<?php echo site_url('SedarCtr/ProductSearch');?>">Blinds</a></li>
-                        <li><a  href="<?php echo site_url('SedarCtr/ProductSearch');?>">Wallcoverings</a></li>
-                        <li><a  href="<?php echo site_url('SedarCtr/ProductSearch');?>">Awnings</a></li>
-                        <li><a  href="<?php echo site_url('SedarCtr/ProductSearch');?>">Pillows</a></li>
-                        <li><a  href="<?php echo site_url('SedarCtr/ProductSearch');?>">Folding doors</a></li>
-                        <li><a  href="<?php echo site_url('SedarCtr/ProductSearch');?>">Accessories</a></li>
+                        <?php foreach($productsName as $product) { ?>
+                        <li><a  href="<?php echo base_url('SedarCtr/productSearch/'.$product['id']);?>"><?php echo $product['name'];?></a></li>
+                        <?php } ?>
                     </div>
                     <div class="col-sm-12">
                         <li><label>CONNECT</label></li>                        
