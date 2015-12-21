@@ -639,5 +639,11 @@ class SedarModel extends CI_Model {
 	}
     }
     //hakkim mod end
+     function ajaxGetAddress($addressID)
+        {
+            $sql="SELECT * FROM store_image where id='$addressID'";
+            return $this->db->query($sql)->result_array();
+            
+        }
     
 }
