@@ -1,3 +1,18 @@
+<style>
+   .polaroid {
+border: 15px solid black;
+ 
+}
+.borderalign {
+    padding-left:15px;
+    left:20px;
+    bottom:15px
+}
+.alignright{
+    left:20px;
+}
+    
+</style>
 <body>
     <div class="container-fluid">
          <div class="row">
@@ -334,8 +349,8 @@
                     ?>
                     <div class="col-md-4 col-sm-6">
                         <div class="row">
-                            <div class="project">
-                                <img class="img-responsive" onClick="getvalueModel($(this));" data-toggle="modal" data-target="#myModal" src="<?php echo $path.$row['textImage'];?>">
+                            <div class="project" id="viewAdd" onclick="getAddress(<?php echo $row['id'];?>);" >
+                                <img class="img-responsive" id="storeImg" onClick="getvalueModel($(this));" data-toggle="modal" data-target="#myModal" src="<?php echo $row['textImage'];?>">
                                 <h3><?php echo $row['addresstitle']?></h3>
                             </div>
                         </div>
@@ -345,7 +360,7 @@
                 <div class="col-md-4 col-sm-6">
                         <div class="row">
                             <div class="project">
-                                <img class="img-responsive" onClick="getvalueModel($(this));" data-toggle="modal" data-target="#myModal" src="<?php echo $path.$row['textImage'];?>">
+                                <img class="img-responsive" onClick="getvalueModel($(this));" data-toggle="modal" data-target="#myModal" src="<?php echo $row['textImage'];?>">
                                 <h3><?php echo $row['addresstitle']?></h3>
                             </div>
                         </div>
@@ -558,14 +573,23 @@
                 </div>
             </div>
             </div>
-                <div class="col-md-3">
-                    <p class="address">Doha Sports City</p>
-                    <p class="address1">Doha Sports City</p>
-                    <p class="address2">Doha Sports City</p>
-                    <p class="phone">Doha Sports City</p>
-                    <p class="fax">Doha Sports City</p>
-
-
+                <div class="col-md-6 borderalign polaroid">
+                   <div class="row ">
+                     <iframe class="" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="389" height="300" src="https://maps.google.com/maps?hl=en&q=sedar , Abu Dhabi Comiche&ie=UTF8&t=roadmap&z=12&iwloc=B&output=embed"></iframe>
+                   </div>
+                </div>
+                <div class="col-md-6 alignright">
+                   <div class="">
+                    
+                    <h4 id="addressFirst">Abu Dhabi Comiche Street - UAE</h4>
+                    <p>Abu Dhabi Comiche</p>
+                    <p>Opp.Shertan </p>
+                    <p>Abu Dhabi,United Arab Emitrates</p>
+                    <p>Tel: +97126768899</p>
+                    <p>Fax: +97126768822</p>
+                   
+                   </div>
+                   <a class="navbar-brand" target="_blank" href="https://www.google.co.in/maps/place/@24.4993619,54.3661573,17z/data=!3m1!4b1!4m2!3m1!1s0x3e5e668aaa46a9e3:0xf1ae4044f59dc34a"><img class="img-responsive"  src="<?php echo base_url();?>assets/images/glogo.png" width="50px" height="50px" ><p style="color:#000;">Google Map</p></a>
                 </div>
             </div>
         </div>
@@ -598,9 +622,21 @@
       </script>-->
            
     <script>
-        
+     
+        function getAddress(id){
+            
+            $.ajax({
+            type:'post',
+            url: "<?=site_url('SedarCtr/getAddress');?>",
+            data:{id:id},
+            dataType:'json',
+            success: function (json){
+                $("#addressFirst").text(json[0].address1);
+            }
+        });
+        }
         function getvalueModel(catched)
-    {
+        {
         var sendmodel = $(catched).attr('src');
         sendmodel=sendmodel.split('/');
         var need = sendmodel.length-1;
@@ -715,7 +751,14 @@
         
         
     </script>  
-      
+      <script>
+        $(document).ready(function(){
+  $('#storeImg').on('shown.bs.modal', function(){
+    google.maps.event.trigger(map, 'resize');
+    map.setCenter(new google.maps.LatLng(-33.8688, 151.2195));
+  });
+});
+      </script>
       
       
     <script>
