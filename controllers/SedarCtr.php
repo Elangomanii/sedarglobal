@@ -351,6 +351,17 @@ class SedarCtr extends CI_Controller {
  //exit;
     }
     
+    function getAddress()
+    {
+	header('Content-Type: application/json');
+	$addressID=$_POST['id'];
+        $viewresult=$this->SedarModel->ajaxGetAddress($addressID);
+	
+	echo json_encode($viewresult);
+
+    }
+    
+    
     
      function footerStore($id)
     {
